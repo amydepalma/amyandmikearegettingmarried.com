@@ -1,0 +1,202 @@
+// ---------------------------------------------------
+// IMPORT FRONTEND STYLING
+// ---------------------------------------------------
+
+/* Core helpers */
+@import "00-init/functions";
+@import "00-init/vars-sass";
+@import "00-init/vars-root";
+@import "00-init/vars-svgs";
+@import "00-init/mixins";
+
+html {
+	font-size: 16px;
+}
+
+.editor-styles-wrapper {
+	/* Normalize reset */
+	@import "00-init/reset";
+
+	/* Content */
+	@include font-smoothing();
+	font-size: 16px;
+	font-family: var(--ff-base);
+	font-weight: normal;
+	font-style: normal;
+	line-height: normal;
+	color: var(--gray-400);
+	@import "01-base/typography";
+	@import "01-base/columns";
+	@import "01-base/wrapper";
+	@import "01-base/buttons";
+	@import "01-base/forms";
+	@import "01-base/table";
+
+	/* Utilities */
+	@import "02-utilities/interactions";
+	@import "02-utilities/layout";
+	@import "02-utilities/links";
+	@import "02-utilities/lists";
+	@import "02-utilities/media";
+	@import "02-utilities/misc";
+	@import "02-utilities/spacing";
+	@import "02-utilities/text";
+
+	/* Components */
+	@import "03-components/cover";
+	@import "03-components/details";
+	@import "03-components/group";
+	@import "03-components/image";
+	@import "03-components/separator";
+
+	/* Templates */
+	// @import "04-templates/structure/header";
+	// @import "04-templates/structure/footer";
+
+	/* Other dependencies  */
+}
+
+// ---------------------------------------------------
+// UPDATE BLOCK EDITOR ADMIN
+// Body gets converted to ".editor-styles-wrapper" so no need to add here
+// https://developer.wordpress.org/block-editor/how-to-guides/themes/theme-support/#editor-styles
+// ---------------------------------------------------
+body {
+
+	// WP page title restyle so it's not so intrusive
+	.edit-post-visual-editor__post-title-wrapper {
+		background-color: #f2f2f2;
+		padding: 1rem rem(24) !important;
+		margin: 0 !important;
+		transition: background-color 0.2s ease;
+
+		&:hover {
+			background-color: #fff;
+			cursor: text;
+		}
+
+		h1 {
+			margin: 0;
+			font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+				Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+			font-size: 14px;
+			font-weight: 400;
+			line-height: 1.3;
+
+			&::before {
+				display: inline-block;
+				content: "Post title: ";
+			}
+		}
+	}
+
+	// Remove underlines from ACF links, such as when it's in a plus icon of a repeater
+	.acf-fields a {
+		color: inherit;
+		text-decoration: inherit;
+	}
+
+	// Overrides
+	[data-mc-namespace] a,
+	a[data-mc-namespace] {
+		pointer-events: none !important;
+		user-select: none !important;
+	}
+
+	[data-mc-namespace] a.stretched-link::after {
+		display: none;
+	}
+
+	.wpseo-meta-section,
+	.wpseo-meta-section-react {
+		// Yoast
+		max-width: none !important;
+	}
+
+	.edit-post-layout__metaboxes {
+		border-top: 1px solid #c6c6c6 !important;
+		background: #f5f5f5 !important;
+		z-index: 999 !important;
+
+		.postbox-header {
+			border-bottom: 1px solid #f5f5f5 !important;
+			border-top-color: #c6c6c6 !important;
+		}
+
+		.acf-postbox .postbox-header {
+			font-size: 14px;
+			font-weight: 600;
+		}
+	}
+}
+
+.edit-post-meta-boxes-area.is-side {
+	.acf-postbox .postbox-header {
+		margin-top: -1px !important;
+	}
+
+	.acf-postbox .postbox-header h2 {
+		font-size: 13px !important;
+		padding-left: 16px !important;
+	}
+}
+
+// Yoast sidebar; literally never use so BYE
+// Also promotes usage of going to bottom so they can fill in the other fields
+.editor-sidebar__panel.components-panel .yoast-seo-sidebar-panel {
+	display: none !important;
+}
+
+// Blocks
+.editor-styles-wrapper {
+	div[data-mc-namespace] {
+		@each $name, $color in $theme-colors {
+			&.has-#{$name}-background-color {
+				background-color: transparent !important;
+			}
+		}
+	}
+}
+
+// ---------------------------------------------------
+// CUSTOM MC-* BLOCK STYLING
+// ---------------------------------------------------
+.block-editor-block-types-list__list-item button[class*="mc-"]:not(:disabled) {
+	color: var(--primary-brand) !important;
+
+	.block-editor-block-types-list__item-title {
+		color: var(--primary-brand) !important;
+	}
+
+	svg,
+	svg path {
+		fill: var(--primary-brand) !important;
+	}
+
+	.dashicon.dashicons::before {
+		color: var(--primary-brand) !important;
+	}
+
+	&:hover,
+	&:active {
+		background-color: var(--primary-100) !important;
+		color: var(--primary-500) !important;
+
+		.block-editor-block-types-list__item-title {
+			color: var(--primary-500) !important;
+		}
+
+		svg,
+		svg path {
+			fill: var(--primary-500) !important;
+		}
+
+		.dashicon.dashicons::before {
+			color: var(--primary-500) !important;
+		}
+	}
+}
+
+.block-editor-block-patterns-list__item {
+	height: auto !important;
+}

@@ -1,0 +1,68 @@
+@import "../../../node_modules/modern-normalize";
+
+::before,
+::after {
+	text-decoration: inherit;
+	vertical-align: inherit;
+}
+
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6,
+// figure,
+// p,
+// ol,
+// ul {
+// 	margin: 0;
+// }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+p,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	// Help prevent overflow of long words/names/URLs
+	overflow-wrap: break-word;
+
+	// Optional, not supported for all languages
+	// hyphens: auto;
+}
+
+img,
+svg {
+	vertical-align: middle;
+}
+
+img {
+	vertical-align: middle;
+	max-inline-size: 100%;
+	height: auto;
+}
+
+p:empty {
+	display: none;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+main:focus-visible {
+	outline: none;
+}

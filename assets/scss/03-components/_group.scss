@@ -1,0 +1,26 @@
+.wp-block-group {
+	&:not(.is-style-w-auto) {
+		width: 100%;
+	}
+
+	p,
+	ul,
+	figure,
+	img {
+		&:last-child {
+			margin-bottom: 0 !important;
+		}
+	}
+}
+
+.d-grid,
+.wp-block-group.is-layout-grid {
+	&:not(.no-mc-grid) {
+		@include create-columns(blockGridGroup);
+	}
+}
+
+.d-flex,
+.wp-block-group.is-layout-flex {
+	@include create-columns(blockFlexGroup);
+}

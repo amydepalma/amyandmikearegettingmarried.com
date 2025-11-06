@@ -1,0 +1,10 @@
+.hover-transform-up {
+	transition: transform ease .2s;
+
+	&:hover,
+	&:active,
+	&:focus,
+	&:focus-visible {
+		transform: translateY(-.2ch);
+	}
+}

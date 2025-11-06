@@ -1,0 +1,63 @@
+table,
+.wp-block-table table {
+	border-collapse: collapse;
+	border-color: inherit;
+	text-indent: 0;
+	border: none;
+	color: var(--gray-400);
+
+	th,
+	td {
+		border: none;
+		padding: .625rem;
+	}
+
+	thead {
+		border: none !important;
+		background-color: var(--mc-brand);
+		border-top-right-radius: 4px;
+		border-top-left-radius: 4px;
+
+		th {
+			border-bottom: 1px solid darken($mc-brand, 5%);
+			font-family: var(--ff-bold);
+			line-height: normal;
+		}
+	}
+
+	tr:first-child th:first-child {
+		border-top-left-radius: 8px;
+	}
+
+	tr:last-child th:last-child {
+		border-top-right-radius: 8px;
+	}
+
+	td {
+		min-width: 6ch;
+		border: none;
+		border-bottom: 1px solid lighten($gray-200, 10%);
+		font-size: 95%;
+	}
+
+	tr:last-of-type td {
+		border-bottom: none;
+	}
+
+	+.wp-element-caption {
+		font-size: rem(14);
+	}
+}
+
+// Wraps the table
+.responsive-table {
+	overflow-x: auto;
+	background-color: white;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+
+	@media screen and (min-width: 640px) {
+		background-color: transparent;
+	}
+}

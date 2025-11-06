@@ -1,0 +1,15 @@
+// Ensure in-block editor images that the figure with .w-100 has the child image go 100%
+.wp-block-image.w-100 img {
+  width: 100%;
+}
+
+:where(figure) {
+  margin-bottom: 0;
+  margin-block-end: 0;
+}
+
+iframe {
+  aspect-ratio: 16 / 9;
+  height: 100%;
+  width: 100%;
+}

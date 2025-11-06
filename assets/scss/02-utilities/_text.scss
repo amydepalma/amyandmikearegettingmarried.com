@@ -1,0 +1,65 @@
+$typeUtilities: (
+  "font-weight": (responsive: false,
+    property: font-family,
+    class: fw,
+    values: (normal: var(--ff-base),
+      medium: var(--ff-medium),
+      bold: var(--ff-bold),
+    )),
+  "line-height": (property: line-height,
+    class: lh,
+    values: (1: 1,
+      sm: var(--lh-sm))),
+  "text-align": (responsive: true,
+    property: text-align,
+    class: has-text-align,
+    values: (start: left,
+      end: right,
+      center: center,
+    )),
+  "text-decoration": (property: text-decoration,
+    class: text-decoration,
+    values: none underline),
+  "text-shadow": (property: text-shadow,
+    class: has-text-shadow,
+    values: (null: var(--text-shadow),
+      sm: var(--text-shadow-sm),
+      md: var(--text-shadow),
+      lg: var(--text-shadow-lg),
+      none: none,
+    )),
+  "text-transform": (property: text-transform,
+    class: text,
+    values: none lowercase uppercase capitalize),
+  "text-wrap": (property: text-wrap,
+    class: text,
+    values: balance pretty wrap),
+
+);
+@include generate-utility($typeUtilities);
+
+// WP handles setting the sizes based on our default settings in theme.json
+@each $name, $size in $fontSizes {
+  .has-#{$name}-font-size {
+    line-height: var(--lh-#{$name});
+  }
+}
+
+/* ----------------
+ALLY
+------------------------------*/
+.screen-reader-text,
+.screen-reader-text-focusable:not(:focus):not(:focus-within) {
+  @include screen-reader-text();
+}
+
+a#skip-to-content {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100000;
+
+  &:focus-visible {
+    outline: rem(4) solid var(--mc-blue);
+  }
+}

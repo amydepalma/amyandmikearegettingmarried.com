@@ -1,0 +1,95 @@
+:root {
+	--mc-admin-bkg: #464646;
+	--mc-admin-bkg-hover: #464646;
+	--mc-admin-menu-hover: #fff;
+	--mc-admin-brand: #FFC000;
+	--mc-admin-brand-hover: #000;
+}
+
+/* ADMIN BAR */
+#wpadminbar {
+	background: var(--mc-admin-bkg) !important;
+}
+
+#wpadminbar:not(.mobile) .ab-top-menu>li:hover>.ab-item,
+.menupop.hover,
+#wpadminbar .ab-top-menu>li.hover:hover>.ab-item,
+#wpadminbar .ab-top-menu>li.hover>.ab-item,
+#wpadminbar .menupop .ab-sub-wrapper {
+	background-color: var(--mc-admin-bkg-hover) !important;
+}
+
+#adminmenu li a:focus div.wp-menu-image:before,
+#adminmenu li.opensub div.wp-menu-image:before,
+#adminmenu li:hover div.wp-menu-image:before,
+#wpadminbar:not(.mobile) .ab-top-menu>li:hover>.ab-item,
+.menupop.hover,
+#wpadminbar .ab-top-menu>li.hover:hover>.ab-item,
+#wpadminbar .ab-top-menu>li.hover>.ab-item,
+#wpadminbar:not(.mobile)>#wp-toolbar li:hover span.ab-label,
+#wpadminbar .ab-top-menu>li.hover:hover>.ab-item span.ab-label,
+#wpadminbar>#wp-toolbar li.hover span.ab-label,
+#wpadminbar .menupop .ab-sub-wrapper,
+#wpadminbar .quicklinks .menupop ul li a:hover,
+#wpadminbar .quicklinks .menupop.hover ul li a:hover,
+#wpadminbar li.hover .ab-icon:before,
+#wpadminbar li:hover .ab-icon:before,
+#wpadminbar li.hover .ab-item:before,
+#wpadminbar li:hover .ab-item:before {
+	color: var(--mc-admin-menu-hover) !important;
+}
+
+#wpadminbar .quicklinks .menupop ul li a {
+	color: var(--mc-admin-menu-hover) !important;
+
+	&:hover {
+		text-decoration: underline !important;
+	}
+}
+
+#wp-admin-bar-wpseo-menu,
+#wp-admin-bar-wp-logo {
+	display: none
+}
+
+/* ADMIN SIDEBAR */
+#adminmenu li.menu-top:hover,
+#adminmenu li.opensub>a.menu-top,
+#adminmenu li>a.menu-top:focus {
+	background: var(--mc-admin-bkg-hover) !important;
+	color: var(--mc-admin-menu-hover) !important;
+}
+
+#adminmenu a:hover {
+	color: var(--mc-admin-menu-hover) !important;
+}
+
+#adminmenu li.wp-menu-separator {
+	height: 5px;
+	padding: 0;
+	margin: 0 0 6px;
+	cursor: inherit;
+	border-bottom: 1px solid rgba(255, 255, 255, .125);
+}
+
+#adminmenu li.wp-has-current-submenu a.wp-has-current-submenu {
+	font-weight: bold;
+	background: var(--mc-admin-bkg-hover) !important;
+	color: var(--mc-admin-menu-hover) !important;
+}
+
+.menu-top>a:hover,
+li.wp-has-submenu>a:hover {
+	color: var(--mc-admin-menu-hover) !important;
+}
+
+/* Post-specific for better editing experience */
+// A bit easier here bc of the meta_box_cb weirdness
+body.wp-admin.post-type-news {
+
+	#formatdiv,
+	#news_categorydiv,
+	#tagsdiv-news_tag {
+		display: none;
+	}
+}

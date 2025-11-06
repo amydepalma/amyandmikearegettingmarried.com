@@ -1,0 +1,20 @@
+$miscUtilities: (
+	"border-radius": (property: border-radius,
+		class: has-border-radius,
+		values: (null: var(--border-radius),
+			100: 100%,
+			xs: var(--border-radius-xs),
+			sm: var(--border-radius-sm),
+			md: var(--border-radius-md),
+			lg: var(--border-radius-lg))),
+	"shadow": (property: box-shadow,
+		class: has-box-shadow,
+		values: (null: var(--box-shadow),
+			sm: var(--box-shadow-sm),
+			md: var(--box-shadow-md),
+			lg: var(--box-shadow-lg),
+			xl: var(--box-shadow-xl),
+			none: none,
+		))
+);
+@include generate-utility($miscUtilities);

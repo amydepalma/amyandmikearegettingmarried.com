@@ -1,0 +1,217 @@
+form {
+	accent-color: var(--form-control-color);
+
+	p,
+	label,
+	div {
+		line-height: 1.25rem;
+	}
+
+	sup {
+		font-size: var(--fs-sm);
+		color: var(--form-control-color);
+		top: -.25em;
+	}
+
+	p {
+		margin-block: 1rem;
+	}
+}
+
+label {
+	display: flex !important;
+	flex-direction: column;
+	font-size: var(--fs-sm);
+	font-family: var(--ff-bold);
+	margin: 0;
+
+	&:has(input, select, textarea) {
+		row-gap: rem(12);
+	}
+
+	&:has(input[type=checkbox], input[type=radio]) {
+		column-gap: 1ch;
+		flex-direction: row;
+		align-items: start;
+		font-size: var(--fs-sm);
+
+		input[type=checkbox],
+		input[type=radio] {
+			transform: translateY(6px);
+		}
+	}
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="search"],
+input[type="password"],
+input[type="url"],
+input[type="date"],
+input[type="number"],
+select,
+textarea {
+	font-size: rem(16);
+	font-family: var(--ff-base);
+	padding: 1em;
+	color: var(--gray-400);
+	background-color: var(--form-input-bkg-color);
+	background-clip: padding-box;
+	border-width: 1px;
+	border-style: solid;
+	border-color: var(--form-border-color);
+	border-radius: rem(4);
+	outline: rem(2) solid transparent;
+	transition: outline .15s ease-in-out;
+
+	&:active,
+	&:focus,
+	&:focus-visible {
+		outline: rem(2) solid var(--primary-brand);
+		outline-offset: -2px;
+	}
+}
+
+input[type=radio],
+input[type=checkbox] {
+	width: 1em;
+	height: 1em;
+}
+
+select {
+	appearance: none;
+	background-image: url("data:image/svg+xml,%3Csvg width='25' height='25' viewBox='0 0 25 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.936 13.6145L17.8858 8.66479L19.3 10.079L12.936 16.443L6.57212 10.079L7.98633 8.66479L12.936 13.6145Z' fill='%23878787'/%3E%3C/svg%3E%0A");
+	background-repeat: no-repeat;
+	background-position: calc(100% - .5rem) center;
+}
+
+textarea {
+	min-height: 20ch !important;
+}
+
+
+// .wForm {
+//
+// 	input[type="text"],
+// 	input[type="tel"],
+// 	input[type="email"],
+// 	input[type="search"],
+// 	input[type="password"],
+// 	input[type="url"],
+// 	input[type="date"],
+// 	input[type="number"],
+// 	select,
+// 	textarea {
+// 		font-size: rem(16);
+// 		padding: 1em !important;
+// 		color: var(--gray-400);
+// 		background-color: var(--white);
+// 		background-clip: padding-box;
+// 		border-width: 1px;
+// 		border-style: solid;
+// 		border-color: var(--form-border-color);
+// 		border-radius: rem(4);
+// 		outline: rem(2) solid transparent;
+// 		transition: outline .15s ease-in-out;
+//
+// 		&:active,
+// 		&:focus,
+// 		&:focus-visible {
+// 			outline: rem(2) solid var(--primary-200);
+// 			outline-offset: -2px;
+// 		}
+// 	}
+//
+// 	input[type=radio],
+// 	input[type=checkbox] {
+// 		width: 1em;
+// 		height: 1em;
+// 	}
+//
+// 	input[type="search"] {
+//
+// 		&::-webkit-search-decoration,
+// 		&::-webkit-search-cancel-button,
+// 		&::-webkit-search-results-button,
+// 		&::-webkit-search-results-decoration {
+// 			-webkit-appearance: none;
+// 		}
+// 	}
+//
+// 	select {
+// 		appearance: none;
+// 		background-image: url("data:image/svg+xml,%3Csvg width='25' height='25' viewBox='0 0 25 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.936 13.6145L17.8858 8.66479L19.3 10.079L12.936 16.443L6.57212 10.079L7.98633 8.66479L12.936 13.6145Z' fill='%23878787'/%3E%3C/svg%3E%0A");
+// 		background-repeat: no-repeat;
+// 		background-position: calc(100% - .5rem) center;
+// 	}
+// }
+
+
+
+/* Contact Form 7 Specifics */
+
+.wpcf7-form .submit-wrap {
+	width: auto;
+
+	p {
+		display: inline-flex;
+		align-items: center;
+		column-gap: var(--mc-spacer-xs);
+		row-gap: var(--mc-spacer-md);
+		// min-width: 400px;
+		flex-wrap: nowrap;
+		margin: 0;
+	}
+}
+
+.wpcf7-acceptance .wpcf7-list-item-label {
+	font-family: var(--ff-base);
+	font-size: rem(13.5);
+	max-width: 75ch;
+	line-height: 1.4;
+}
+
+// Error handling
+.wpcf7-not-valid-tip {
+	font-size: var(--fs-sm);
+	color: var(--form-error) !important;
+	padding: 0.5rem 0 0 0;
+	text-align: left;
+	position: relative;
+	top: auto;
+	left: auto;
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="search"],
+input[type="password"],
+input[type="url"],
+input[type="date"],
+input[type="number"],
+select.form-select,
+textarea {
+
+	&.wpcf7-not-valid,
+	&.wpcf7-not-valid.border-gray-300 {
+		border: 1px solid var(--form-error) !important;
+	}
+}
+
+.wpcf7-response-output {
+	font-size: rem(14);
+	margin: 0 0 4rem 0 !important;
+	padding: 1rem !important;
+	color: var(--form-success) !important;
+	border-color: var(--form-success) !important;
+	border-width: rem(1);
+	background-color: transparent !important;
+}
+
+.wpcf7-form.invalid .wpcf7-response-output {
+	color: var(--form-error) !important;
+	border-color: var(--form-error) !important;
+	background-color: transparent !important;
+}

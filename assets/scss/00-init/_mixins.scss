@@ -1,0 +1,620 @@
+/* ----------------
+BREAKPOINTS: Mixins for use with utility generation
+Forked from Bootstrap 5.3.3
+------------------------------*/
+
+@mixin media-breakpoint-down($breakpoint-name) {
+  @media screen and (max-width: map-get($breakpoints, $breakpoint-name)) {
+    @content;
+  }
+}
+
+@mixin media-breakpoint-up($breakpoint-name) {
+  @media screen and (min-width: map-get($breakpoints, $breakpoint-name)) {
+    @content;
+  }
+}
+
+/* ----------------
+BUILD UTILITY CLASSES: Mixins for use with utility generation
+Forked from Bootstrap 5.3.3
+------------------------------*/
+// Wrapper for the breakpoint loop to simplify seperating this out into different files
+@mixin generate-utility($utilityMap) {
+  // $utilities: map-get($utilityMap, values);
+
+  @each $breakpoint in map-keys($breakpoints) {
+
+    // Generate media query if needed
+    @include media-breakpoint-up($breakpoint) {
+      $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+      // Loop over each utility property
+      @each $key, $utility in $utilityMap {
+
+        // The utility can be disabled with `false`, thus check if the utility is a map first
+        // Only proceed if responsive media queries are enabled or if it's the base media query
+        @if type-of($utility)=="map" and (map-get($utility, responsive) or $infix =="") {
+          @include build-utility-classes($utility, $infix);
+        }
+      }
+    }
+  }
+}
+
+@mixin build-utility-classes($utility, $infix: "") {
+  $values: map-get($utility, values);
+
+  // If the values are a list or string, convert it into a map
+  @if type-of($values)=="string" or type-of(nth($values, 1)) !="list" {
+    $values: zip($values, $values);
+  }
+
+  @each $key, $value in $values {
+    $properties: map-get($utility, property);
+
+    // Multiple properties are possible, for example with vertical or horizontal margins or paddings
+    @if type-of($properties)=="string" {
+      $properties: append((), $properties);
+    }
+
+    // Use custom class if present
+    $property-class: if(map-has-key($utility, class), map-get($utility, class), nth($properties, 1));
+    $property-class: if($property-class ==null, "", $property-class);
+
+    // State params to generate pseudo-classes
+    $state: if(map-has-key($utility, state), map-get($utility, state), ());
+
+    $infix: if($property-class =="" and str-slice($infix, 1, 1)=="-", str-slice($infix, 2), $infix);
+
+    // Don't prefix if value key is null (e.g. with shadow class)
+    $property-class-modifier: if($key, if($property-class =="" and $infix =="", "", "-") + $key, "");
+
+    @if $value !=null {
+
+      .#{$property-class + $infix + $property-class-modifier} {
+        @each $property in $properties {
+          #{$property}: $value !important;
+        }
+      }
+
+      @each $pseudo in $state {
+        .#{$property-class + $infix + $property-class-modifier}-#{$pseudo}:#{$pseudo} {
+          @each $property in $properties {
+            #{$property}: $value !important;
+          }
+        }
+      }
+
+    }
+  }
+}
+
+/* ----------------
+CREATE COLUMNS
+------------------------------*/
+@mixin create-columns($columnStructure: default) {
+
+  @each $name in $columnStructure {
+
+    // Default we need to set up "display: grid"; blockGridGroup we are just modifying an already-displaying-as-grid element; this will take on the Block Spacing as the gab
+    @if $name ==default or $name ==blockGridGroup {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(1, 1fr);
+      justify-content: start;
+      align-items: start;
+      align-content: start;
+      grid-auto-flow: row;
+
+      &.is-style-columns-auto {
+        grid-template-columns: 1fr;
+
+        @include media-breakpoint-up(md) {
+          grid-template-columns: auto 1fr;
+        }
+      }
+
+      &.is-style-columns-2x {
+        grid-template-columns: repeat(1, 1fr);
+
+        @include media-breakpoint-up(md) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      &.is-style-columns-3x {
+        grid-template-columns: repeat(1, 1fr);
+
+        @include media-breakpoint-up(md) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include media-breakpoint-up(lg) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      &.is-style-columns-4x {
+        grid-template-columns: repeat(1, 1fr);
+
+        @include media-breakpoint-up(md) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include media-breakpoint-up(lg) {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include media-breakpoint-up(xl) {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      &.is-style-columns-60-40 {
+        grid-template-columns: repeat(1, 1fr);
+
+        @include media-breakpoint-up(md) {
+          grid-template-columns: .6fr .4fr;
+        }
+      }
+
+      &.is-style-columns-40-60 {
+        grid-template-columns: repeat(1, 1fr);
+
+        @include media-breakpoint-up(md) {
+          grid-template-columns: .4fr .6fr;
+        }
+      }
+
+      &.is-style-columns-65-35 {
+        grid-template-columns: repeat(1, 1fr);
+
+        @include media-breakpoint-up(lg) {
+          grid-template-columns: .65fr .35fr;
+        }
+      }
+
+      &.is-style-columns-35-65 {
+        grid-template-columns: repeat(1, 1fr);
+
+        @include media-breakpoint-up(lg) {
+          grid-template-columns: .35fr .65fr;
+        }
+      }
+
+      &.is-style-columns-55-45 {
+        grid-template-columns: repeat(1, 1fr);
+
+        @include media-breakpoint-up(lg) {
+          grid-template-columns: .55fr .45fr;
+        }
+      }
+
+      &.is-style-columns-45-55 {
+        grid-template-columns: repeat(1, 1fr);
+
+        @include media-breakpoint-up(lg) {
+          grid-template-columns: .45fr .55fr;
+        }
+      }
+
+      &.is-style-columns-70-30 {
+        grid-template-columns: repeat(1, 1fr);
+
+        @include media-breakpoint-up(lg) {
+          grid-template-columns: .7fr .3fr;
+        }
+      }
+
+      &.is-style-columns-30-70 {
+        grid-template-columns: repeat(1, 1fr);
+
+        @include media-breakpoint-up(lg) {
+          grid-template-columns: .3fr 1fr;
+
+          >.wp-block-group:last-of-type {
+            overflow: auto;
+          }
+        }
+      }
+
+      &.is-style-columns-75-25 {
+        grid-template-columns: repeat(1, 1fr);
+
+        @include media-breakpoint-up(lg) {
+          grid-template-columns: .75fr .25fr;
+        }
+      }
+
+      &.is-style-columns-25-75 {
+        grid-template-columns: repeat(1, 1fr);
+
+        @include media-breakpoint-up(lg) {
+          grid-template-columns: .25fr .75fr;
+        }
+      }
+
+      &.is-style-columns-featured {
+        :first-child {
+          grid-column: 1 / -1;
+        }
+      }
+
+      // TODO, make this fancier!
+      &.is-style-columns-featured-center {
+        grid-auto-columns: 1fr;
+        grid-auto-rows: auto auto;
+        grid-template-columns: auto;
+        grid-template-rows: repeat(2, 0.65fr) 1fr;
+        justify-content: center;
+        grid-template-areas:
+          "small-one"
+          "small-two"
+          "large";
+
+        >:first-of-type {
+          grid-area: small-one;
+        }
+
+        >:last-of-type {
+          grid-area: small-two;
+        }
+
+        >:nth-of-type(2) {
+          grid-area: large;
+        }
+
+
+        @include media-breakpoint-up(md) {
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(2, 1fr);
+          align-items: stretch;
+          grid-template-areas:
+            "small-one small-two"
+            "large large";
+
+
+          >:first-of-type {
+            grid-area: small-one;
+          }
+
+          >:last-of-type {
+            grid-area: small-two;
+          }
+
+          >:nth-of-type(2) {
+            grid-area: large;
+          }
+        }
+
+
+        @include media-breakpoint-up(lg) {
+          justify-content: center;
+          align-items: center;
+          align-content: center;
+          grid-auto-columns: 4fr;
+          grid-auto-rows: auto auto;
+          grid-template-columns: 0.65fr 1fr 0.65fr;
+          grid-template-rows: 1fr;
+          grid-template-areas:
+            "small-one large small-two";
+        }
+      }
+    }
+
+    @else if $name ==blockFlexGroup {
+      &.is-style-columns-auto {
+        flex: 0 0 100%;
+
+        @include media-breakpoint-up(md) {
+          flex: 0 0 auto;
+        }
+      }
+
+      &.is-style-columns-2x>* {
+        flex: 0 0 100%;
+
+        @include media-breakpoint-up(md) {
+          flex: 0 0 calc(50% - var(--padding-inline));
+        }
+      }
+
+      &.is-style-columns-3x>* {
+        flex: 0 0 100%;
+
+        @include media-breakpoint-up(md) {
+          flex: 0 0 calc(33% - var(--padding-inline));
+        }
+      }
+
+      &.is-style-columns-4x>* {
+        flex: 0 0 100%;
+
+        @include media-breakpoint-up(md) {
+          flex: 0 0 calc(50% - var(--padding-inline));
+        }
+
+        @include media-breakpoint-up(lg) {
+          flex: 0 0 calc(25% - var(--padding-inline));
+        }
+      }
+
+      &.is-style-columns-60-40 {
+
+        @include media-breakpoint-down(md) {
+          flex-wrap: wrap;
+
+          >*:first-of-type,
+          >*:last-of-type {
+            flex: 1 auto;
+          }
+        }
+
+        @include media-breakpoint-up(md) {
+          flex-wrap: nowrap;
+
+          >*:first-of-type {
+            flex: 0 1 min(100%, 60%);
+          }
+
+          >*:last-of-type {
+            flex: 0 1 min(100%, 40%);
+          }
+        }
+      }
+
+      &.is-style-columns-40-60 {
+
+        @include media-breakpoint-down(lg) {
+          flex-wrap: wrap;
+
+          >*:first-of-type,
+          >*:last-of-type {
+            flex: 1 auto;
+          }
+        }
+
+        @include media-breakpoint-up(lg) {
+          flex-wrap: nowrap;
+
+          >*:first-of-type {
+            flex: 0 1 min(100%, 40%);
+          }
+
+          >*:last-of-type {
+            flex: 0 1 min(100%, 60%);
+          }
+        }
+      }
+
+
+      &.is-style-columns-65-35 {
+
+        @include media-breakpoint-down(lg) {
+          flex-wrap: wrap;
+
+          >*:first-of-type,
+          >*:last-of-type {
+            flex: 1 auto;
+          }
+        }
+
+        @include media-breakpoint-up(lg) {
+          flex-wrap: nowrap;
+
+          >*:first-of-type {
+            flex: 0 1 min(100%, 65%);
+          }
+
+          >*:last-of-type {
+            flex: 0 1 min(100%, 35%);
+          }
+        }
+      }
+
+      &.is-style-columns-35-65 {
+
+        @include media-breakpoint-down(lg) {
+          flex-wrap: wrap;
+
+          >*:first-of-type,
+          >*:last-of-type {
+            flex: 1 auto;
+          }
+        }
+
+        @include media-breakpoint-up(lg) {
+          flex-wrap: nowrap;
+
+          >*:first-of-type {
+            flex: 0 1 min(100%, 35%);
+          }
+
+          >*:last-of-type {
+            flex: 0 1 min(100%, 65%);
+          }
+        }
+      }
+
+      &.is-style-columns-55-45 {
+
+        @include media-breakpoint-down(lg) {
+          flex-wrap: wrap;
+
+          >*:first-of-type,
+          >*:last-of-type {
+            flex: 1 auto;
+          }
+        }
+
+        @include media-breakpoint-up(lg) {
+          flex-wrap: nowrap;
+
+          >*:first-of-type {
+            flex: 0 1 min(100%, 55%);
+          }
+
+          >*:last-of-type {
+            flex: 0 1 min(100%, 45%);
+          }
+        }
+      }
+
+      &.is-style-columns-45-55 {
+
+        @include media-breakpoint-down(lg) {
+          flex-wrap: wrap;
+
+          >*:first-of-type,
+          >*:last-of-type {
+            flex: 1 auto;
+          }
+        }
+
+        @include media-breakpoint-up(lg) {
+          flex-wrap: nowrap;
+
+          >*:first-of-type {
+            flex: 0 1 min(100%, 45%);
+          }
+
+          >*:last-of-type {
+            flex: 0 1 min(100%, 55%);
+          }
+        }
+      }
+
+      &.is-style-columns-30-70 {
+
+        @include media-breakpoint-down(lg) {
+          flex-wrap: wrap;
+
+          >*:first-of-type,
+          >*:last-of-type {
+            flex: 1 auto;
+          }
+        }
+
+        @include media-breakpoint-up(lg) {
+          flex-wrap: nowrap;
+
+          >*:first-of-type {
+            flex: 0 1 min(100%, 30%);
+          }
+
+          >*:last-of-type {
+            flex: 0 1 min(100%, 70%);
+          }
+        }
+      }
+
+      &.is-style-columns-70-30 {
+
+        @include media-breakpoint-down(lg) {
+          flex-wrap: wrap;
+
+          >*:first-of-type,
+          >*:last-of-type {
+            flex: 1 auto;
+          }
+        }
+
+        @include media-breakpoint-up(lg) {
+          flex-wrap: nowrap;
+
+          >*:first-of-type {
+            flex: 0 1 min(100%, 70%);
+          }
+
+          >*:last-of-type {
+            flex: 0 1 min(100%, 30%);
+          }
+        }
+      }
+
+      &.is-style-columns-25-75 {
+        @include media-breakpoint-down(lg) {
+          flex-wrap: wrap;
+
+          >*:first-of-type,
+          >*:last-of-type {
+            flex: 1 auto;
+          }
+        }
+
+        @include media-breakpoint-up(lg) {
+          flex-wrap: nowrap;
+
+          >*:first-of-type {
+            flex: 0 1 min(100%, 25%);
+          }
+
+          >*:last-of-type {
+            flex: 0 1 min(100%, 75%);
+          }
+        }
+      }
+
+      &.is-style-columns-75-25 {
+        @include media-breakpoint-down(lg) {
+          flex-wrap: wrap;
+
+          >*:first-of-type,
+          >*:last-of-type {
+            flex: 1 auto;
+          }
+        }
+
+        @include media-breakpoint-up(lg) {
+          flex-wrap: nowrap;
+
+          >*:first-of-type {
+            flex: 0 1 min(100%, 75%);
+          }
+
+          >*:last-of-type {
+            flex: 0 1 min(100%, 25%);
+          }
+        }
+      }
+    }
+  }
+}
+
+
+/* ----------------
+FONT SMOOTHING
+------------------------------*/
+@mixin font-smoothing($value: on) {
+  @if $value ==on {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @else {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+}
+
+/* ----------------
+SCREEN READER TEXT
+------------------------------*/
+@mixin screen-reader-text() {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@mixin screen-reader-text-focusable() {
+  &:not(:focus):not(:focus-within) {
+    @include screen-reader-text();
+  }
+}

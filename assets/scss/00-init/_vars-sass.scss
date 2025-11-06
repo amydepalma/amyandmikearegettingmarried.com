@@ -1,0 +1,232 @@
+/* ----------------
+LAYOUT & BREAKPOINTS
+------------------------------*/
+// Breakpoints
+// 782 is Wordpress
+$breakpoints: (
+	"xxs": 0,
+	"xs": 475px,
+	"sm": 576px,
+	"md": 782px,
+	"lg": 992px,
+	"xl": 1200px,
+	"xxl": 1400px
+);
+
+$maxWidths: (
+	"sm": 576px,
+	"md": 782px,
+	"lg": 1140px,
+	"xl": 1260px,
+	"xxl": 1320px,
+	"extended": 1445px,
+	"header": 1500px
+);
+
+/* ----------------
+TYPE
+@link https://clamp.font-size.app/?config=eyJyb290IjoiMTYiLCJtaW5XaWR0aCI6IjQyNXB4IiwibWF4V2lkdGgiOiI3ODJweCIsIm1pbkZvbnRTaXplIjoiMTYuNXB4IiwibWF4Rm9udFNpemUiOiIxOC41cHgifQ%3D%3D
+------------------------------*/
+$fontSizes: (
+	"xs": rem(13.5),
+
+	// 14 → 16
+	"sm": clamp(0.875rem, 0.7262rem + 0.5602vw, 1rem),
+
+	// 16.5 → 18.5 (Body, H5, H6)
+	"page": clamp(1.03125rem, 0.8824rem + 0.5602vw, 1.15625rem),
+
+	// 20.2 → 22.2 (H4)
+	"md": clamp(1.2625rem, 1.1137rem + 0.5602vw, 1.3875rem),
+
+	// 24.64 → 26.64 (H3)
+	"lg": clamp(1.54rem, 1.3912rem + 0.5602vw, 1.665rem),
+
+	// 29.97 → 31.97 (H2)
+	"xl": clamp(1.873125rem, 1.7243rem + 0.5602vw, 1.998125rem),
+
+	// 36.36 → 38.36
+	"xxl": clamp(2.2725rem, 2.1237rem + 0.5602vw, 2.3975rem),
+
+	// 41.03 → 46.03 (H1)
+	"giant": clamp(2rem, 0.9561rem + 3.93vw, 2.876875rem),
+
+	// 32.24  → 55.24
+	"jumbo": clamp(2.015rem, 0.3037rem + 6.4426vw, 3.4525rem),
+
+	// 36.29 → 66.29
+	"super":clamp(2.268125rem, 0.036rem + 8.4034vw, 4.143125rem),
+);
+
+$lineHeights: (
+	"xs": 1.6,
+	"sm": 1.8,
+	"page": 1.785,
+	"md": 1.65,
+	"lg": 1.5,
+	"xl": 1.45,
+	"xxl": 1.45,
+	"giant": 1.375,
+	"jumbo": 1.25,
+	"super": 1.25
+);
+
+/* ----------------
+COLORS
+// ------------------------------*/
+
+$mc-100: #FFF6E1;
+$mc-200: #FFE2A5;
+$mc-brand: #FFC000;
+$mc-400: #E5AE10;
+$mc-500: #8d6b07;
+$mc-brand-rgb: '255, 192, 0';
+
+$cip-100: #f4f9fe;
+$cip-200: #6583BF;
+$cip-brand: #3A5CAE;
+$cip-400: #294ba1;
+$cip-500: #07366E;
+$cip-brand-rgb: '58, 92, 172';
+
+$cdc-100: #F5F9F9;
+$cdc-200: #aeded5;
+$cdc-brand: #008478;
+$cdc-400: #13625A;
+$cdc-500: #15423D;
+$cdc-brand-rgb: '0, 132, 120';
+
+$mc-purple: #962eff;
+$mc-purple-rgb: '150, 46, 255';
+
+$mc-green: #6CBE45;
+$mc-green-rgb: '140, 198, 69';
+
+$mc-blue: #45A0D4;
+$mc-blue-rgb: '69, 160, 212';
+
+$mc-orange: #fe7a00;
+$mc-orange-rgb: '254, 122, 0';
+
+$mdc-100: #EEF6FB;
+$mdc-200: #9CCCE8;
+$mdc-brand: var(--mc-blue);
+$mdc-400: #2B83B6;
+$mdc-500: #1F5F84;
+$mdc-brand-rgb: var(--mc-blue-rgb);
+
+$ms-100: #f2f3f3;
+$ms-200: #ACADAF;
+$ms-brand: #6D6E71;
+$ms-400: #464646;
+$ms-500: #212529;
+$ms-brand-rgb: '109, 110, 113';
+
+$gray-000: #f8f9fa;
+$gray-100: #f2f2f2;
+$gray-200: #d0d0d0;
+$gray-brand: var(--ms-brand);
+$gray-400: var(--ms-400);
+$gray-500: var(--ms-500);
+$gray-brand-rgb: var(--ms-brand-rgb);
+
+$white: #FFFFFF;
+$black: #000000;
+
+$primary-100: var(--primary-100);
+$primary-200: var(--primary-200);
+$primary-brand: var(--primary-brand);
+$primary-400: var(--primary-400);
+$primary-500: var(--primary-500);
+$primary-brand-rgb: var(--primary-brand-rgb);
+
+$theme-colors: (
+	"mc-100": $mc-100,
+	"mc-200": $mc-200,
+	"mc-brand": $mc-brand,
+	"mc-brand-rgb": $mc-brand-rgb,
+	"mc-400": $mc-400,
+	"mc-500": $mc-500,
+
+	"cip-100": $cip-100,
+	"cip-200": $cip-200,
+	"cip-brand": $cip-brand,
+	"cip-brand-rgb": $cip-brand-rgb,
+	"cip-400": $cip-400,
+	"cip-500": $cip-500,
+
+	"cdc-100": $cdc-100,
+	"cdc-200": $cdc-200,
+	"cdc-brand": $cdc-brand,
+	"cdc-brand-rgb": $cdc-brand-rgb,
+	"cdc-400": $cdc-400,
+	"cdc-500": $cdc-500,
+
+	"mc-blue": $mc-blue,
+	"mc-blue-rgb": $mc-blue-rgb,
+	"mc-purple": $mc-purple,
+	"mc-purple-rgb": $mc-purple-rgb,
+	"mc-green": $mc-green,
+	"mc-green-rgb": $mc-green-rgb,
+	"mc-orange": $mc-orange,
+	"mc-orange-rgb": $mc-orange-rgb,
+
+	"mdc-100": $mdc-100,
+	"mdc-200": $mdc-200,
+	"mdc-brand": $mdc-brand,
+	"mdc-brand-rgb": $mdc-brand-rgb,
+	"mdc-400": $mdc-400,
+	"mdc-500": $mdc-500,
+
+	"ms-100": $ms-100,
+	"ms-200": $ms-200,
+	"ms-brand": $ms-brand,
+	"ms-brand-rgb": $ms-brand-rgb,
+	"ms-400": $ms-400,
+	"ms-500": $ms-500,
+
+	"gray-000": $gray-000,
+	"gray-100": $gray-100,
+	"gray-200": $gray-200,
+	"gray-brand": $gray-brand,
+	"gray-brand-rgb": $gray-brand-rgb,
+	"gray-400": $gray-400,
+	"gray-500": $gray-500,
+	"white": $white,
+	"black": $black,
+
+	"primary-100": $primary-100,
+	"primary-200": $primary-200,
+	"primary-brand": $primary-brand,
+	"primary-brand-rgb": $primary-brand-rgb,
+	"primary-400": $primary-400,
+	"primary-500": $primary-500,
+);
+
+/* ----------------
+SPACING
+@link https://utopia.fyi/space/calculator?c=320,16,1.2,1440,18,1.25,7,2,&s=0.5|0.25,1.5|2|2.5|3.5|4|6|8|10,s-l&g=s,l,xl,12
+------------------------------*/
+$spacerSizes: (
+	"0": 0,
+	/* Space xs: 8px → 9px */
+	"xs": clamp(0.5rem, 0.4821rem + 0.0893vi, 0.5625rem),
+	/* Space s: 16px → 18px */
+	"sm": clamp(1rem, 0.9643rem + 0.1786vi, 1.125rem),
+	// 16.5 → 18.5 (Body, H5, H6)
+	"page": clamp(1.03125rem, 0.8824rem + 0.5602vw, 1.15625rem),
+	/* Space m: 24px → 27px */
+	"md": clamp(1.5rem, 1.4464rem + 0.2679vi, 1.6875rem),
+	/* Space l: 32px → 36px */
+	"lg": clamp(2rem, 1.9286rem + 0.3571vi, 2.25rem),
+	/* Space xl: 40px → 45px */
+	"xl": clamp(2.5rem, 2.4107rem + 0.4464vi, 2.8125rem),
+	/* Space 2xl: 56px → 63px */
+	"xxl": clamp(3.5rem, 3.375rem + 0.625vi, 3.9375rem),
+	/* Space 3xl: 64px → 72px */
+	"giant": clamp(4rem, 3.8571rem + 0.7143vi, 4.5rem),
+	/* Space 4xl: 96px → 108px */
+	"jumbo": clamp(6rem, 5.7857rem + 1.0714vi, 6.75rem),
+	/* Space 5xl: 128px → 144px */
+	"super": clamp(8rem, 7.7143rem + 1.4286vi, 9rem)
+);

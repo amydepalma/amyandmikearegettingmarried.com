@@ -1,0 +1,43 @@
+hr,
+.wp-block-separator {
+	opacity: 1;
+	width: 100%;
+	border: none;
+	border-top-style: solid;
+	border-top-color: var(--gray-200);
+
+	@each $name, $color in $theme-colors {
+		&.has-#{$name}-background-color {
+			border-color: $color !important;
+		}
+	}
+
+	&:not(.is-style-hr-medium, .is-style-hr-thick) {
+		border-top-width: rem(1);
+	}
+
+	&:not(.aligncenter) {
+		margin-left: inherit !important;
+		margin-right: inherit !important;
+	}
+
+	&.is-style-hr-medium {
+		border-top-width: rem(2);
+	}
+
+	&.is-style-hr-thick {
+		border-width: rem(3);
+	}
+}
+
+// Editor overrides
+.editor-styles-wrapper {
+
+	.wp-block-separator {
+		@each $name, $color in $theme-colors {
+			&.has-#{$name}-background-color {
+				background-color: transparent !important;
+			}
+		}
+	}
+}

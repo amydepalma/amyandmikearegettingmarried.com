@@ -1,0 +1,44 @@
+details.wp-block-details summary {
+	cursor: pointer;
+	display: list-item;
+
+	>* {
+		display: inline;
+	}
+}
+
+
+
+details.wp-block-details {
+
+	summary {
+		color: var(--cip-brand);
+		font-family: var(--ff-medium);
+		font-weight: normal !important;
+		align-items: center;
+		// list-style-type: none;
+
+		&::marker {
+			margin-right: .5ch;
+		}
+
+		// &::before {
+		// 	content: '';
+		// 	display: inline-flex;
+		// 	width: 24px;
+		// 	height: 24px;
+		// 	justify-content: center;
+		// 	align-items: center;
+		// 	background-image: url("data:image/svg+xml,%3Csvg width='25' height='25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m12.648 13.382 4.95-4.95 1.414 1.414-6.364 6.364-6.364-6.364 1.414-1.414 4.95 4.95Z' fill='%233A5CAC'/%3E%3C/svg%3E");
+		// 	background-repeat: no-repeat;
+		// 	margin-right: .5ch;
+		// }
+	}
+
+	// &[open] {
+	// 	summary::before {
+	// 		background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.0001 10.8284L7.05044 15.7782L5.63623 14.364L12.0001 8L18.3641 14.364L16.9499 15.7782L12.0001 10.8284Z' fill='%233A5CAC'/%3E%3C/svg%3E%0A");
+	// 		top: 7px;
+	// 	}
+	// }
+}

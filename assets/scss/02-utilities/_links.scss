@@ -1,0 +1,76 @@
+/* ----------------
+External Links
+------------------------------*/
+a.link-external:not(.is-style-arrow-after),
+p.link-external:not(.is-style-arrow-after),
+.wp-block-button.link-external:not(.is-style-arrow-after) a.wp-block-button__link {
+	display: inline;
+
+	&:not(:has(img)) {
+		&::before {
+			position: absolute;
+			left: -999em;
+			right: auto;
+			content: "External.";
+		}
+
+		&::after {
+			background: 0 0;
+			background-color: currentColor;
+			mask-image: var(--icon-external),
+				linear-gradient(transparent, transparent);
+			mask-position: center center;
+			mask-repeat: no-repeat;
+			mask-size: 1.25ex 1.25ex;
+			height: 1.25ex;
+			width: 1.25ex;
+			content: "";
+			display: inline;
+			margin-top: 0;
+			margin-left: 0.1ch;
+			padding-left: 1.25ex;
+		}
+	}
+}
+
+p.link-external:not(.is-style-arrow-after) {
+	display: inline-block;
+
+	&:not(:has(img))::after {
+		mask-size: 1.5ex 1.5ex;
+		height: 1.5ex;
+		width: 1.5ex;
+		margin-left: 0.35ch;
+		padding-left: 1.5ex;
+	}
+}
+
+.wp-block-button.link-external:not(.is-style-arrow-after) a.wp-block-button__link {
+	display: inline-flex;
+	align-items: end;
+	gap: .35ch;
+
+	&:not(:has(img))::after {
+		transform: translateY(-1px);
+		mask-size: 1.5ex 1.5ex;
+		height: 1.5ex;
+		width: 1.5ex;
+		margin-left: 0.20ch;
+		padding-left: 1.5ex;
+	}
+}
+
+/* ----------------
+Styling
+------------------------------*/
+a.hover-text-underline,
+p.hover-text-underline a {
+	text-decoration: none !important;
+
+	&:hover,
+	&:active,
+	&:focus,
+	&:focus-visible {
+		text-decoration: underline !important;
+	}
+}

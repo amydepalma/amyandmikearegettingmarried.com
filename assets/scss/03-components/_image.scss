@@ -1,0 +1,9 @@
+.wp-block-image.is-style-centered {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	.wp-element-caption {
+		text-align: center;
+	}
+}

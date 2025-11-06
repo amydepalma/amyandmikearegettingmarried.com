@@ -1,0 +1,12 @@
+.columns {
+	@include create-columns();
+}
+
+ul.columns {
+	padding: 0 !important;
+	list-style-type: none;
+
+	>li {
+		margin: 0;
+	}
+}

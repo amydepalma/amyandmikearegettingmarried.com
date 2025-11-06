@@ -1,0 +1,297 @@
+/* ----------------
+BASE
+------------------------------*/
+html,
+:root {
+	scroll-behavior: smooth;
+}
+
+body {
+	@include font-smoothing();
+
+	// Delightful!
+	::-moz-selection {
+		background-color: $mc-100;
+		color: initial;
+		cursor: text;
+	}
+
+	::selection {
+		background-color: $mc-100;
+		color: initial;
+		cursor: text;
+	}
+}
+
+.has-mc-100-background-color {
+	::-moz-selection {
+		background-color: $mc-200;
+	}
+
+	::selection {
+		background-color: $mc-200;
+	}
+}
+
+:root,
+html,
+body {
+	font-size: 16px;
+	font-family: var(--ff-base);
+	font-weight: normal;
+	font-style: normal;
+	line-height: normal;
+	color: var(--gray-400);
+}
+
+b,
+strong {
+	font-family: var(--ff-medium);
+	font-weight: normal;
+}
+
+i,
+em {
+	font-family: var(--ff-italic);
+	font-style: normal;
+}
+
+.fw-medium {
+
+	b,
+	strong {
+		font-family: var(--ff-bold);
+		font-weight: normal;
+	}
+}
+
+a:not(.wp-element-button, .elementor-button-link, .mc-button, .page-numbers) {
+	text-decoration: underline;
+	color: var(--link-color);
+	cursor: pointer;
+
+	&:hover,
+	&:active,
+	&:focus,
+	&:focus-visible {
+		color: var(--link-hover-color);
+	}
+
+	&:focus-visible {
+		outline: rem(2) solid var(--mc-blue);
+	}
+}
+
+/* ----------------
+HEADINGS & PARAGRAPHS
++ Adjust spacing
+------------------------------*/
+@for $i from 1 through 6 {
+
+	h#{$i} {
+		font-family: var(--ff-medium);
+		line-height: var(--h#{$i}-lh);
+		font-size: var(--h#{$i});
+		text-wrap: pretty;
+		margin-block-end: 0;
+		scroll-margin-top: 1em;
+
+		@include media-breakpoint-up(lg) {
+			scroll-margin-top: 1.25em;
+		}
+
+		b,
+		strong {
+			font-family: var(--ff-bold);
+		}
+
+		a {
+			text-decoration: none !important;
+		}
+
+		+p {
+			margin-block-start: .75em;
+		}
+	}
+}
+
+h1 {
+	margin-block-start: 0;
+}
+
+h2 {
+	margin-block-start: 1.5em;
+}
+
+h3 {
+	font-family: var(--ff-bold);
+	margin-block-start: 1.44em;
+}
+
+h4 {
+	margin-block-start: 1.33em;
+}
+
+h4+p {
+	margin-block-start: .25rem;
+}
+
+h5,
+h6 {
+	font-family: var(--ff-bold);
+	margin-block-start: .75em;
+}
+
+h2+h3,
+h3+h4,
+h4+h5,
+h5+h6 {
+	margin-block-start: .75em;
+}
+
+ul+h2,
+ul+h3,
+ul+h4,
+ul+h4,
+ul+h6 {
+	margin-block-start: 2em !important;
+}
+
+p {
+	font-size: var(--fs-page);
+	line-height: var(--lh-page);
+	text-wrap: pretty;
+	margin-block-start: 1em;
+	margin-block-end: 0;
+
+	// Remove any max-widths on paragraphs so we can go full-width
+	@include media-breakpoint-down(md) {
+		max-width: unset !important;
+	}
+}
+
+section,
+header,
+footer,
+aside {
+	:is(h1, h2, h3, h4, h5, h6, p, ul):first-child {
+		margin-top: 0 !important;
+	}
+}
+
+
+// .single-program #program-content div.wp-block-group,
+// .single-story #story-content div.wp-block-group {
+// 	:is(h1, h2, h3, h4, h5, h6, p, ul):first-child {
+// 		margin-top: 0 !important;
+// 	}
+// }
+
+/* ----------------
+OTHER
+------------------------------*/
+// Lists
+:where(dl, ol, ul):not(.wp-block-post-template, .dropdown-menu, .acf-bl, .columns) {
+	font-size: var(--fs-page);
+	line-height: var(--lh-page);
+	margin-block-start: 1em;
+	margin-block-end: 0;
+
+	li {
+		margin-bottom: .75em;
+		color: inherit;
+		font-size: inherit;
+		line-height: inherit;
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+
+	:is(dl, ol, ul) {
+		margin-block-start: .65em;
+	}
+
+
+	li ul:not(.dropdown-menu) {
+		padding-bottom: 0;
+		font-size: inherit;
+		line-height: inherit;
+
+		li {
+			list-style-type: square;
+		}
+	}
+}
+
+
+// :where(ul):not(.wp-block-post-template, .dropdown-menu, .acf-bl, .columns) {
+// 	li::marker {
+// 		color: var(--mc-brand);
+// 	}
+// }
+//
+// :where(ol):not(.wp-block-post-template, .dropdown-menu, .acf-bl, .columns) {
+// 	li::marker {
+// 		font-family: var(--ff-medium);
+// 		color: var(--black);
+// 	}
+// }
+
+
+// Misc
+.has-mc-brand-background-color {
+
+	h1,
+	h2,
+	h3,
+	h4,
+	p,
+	.has-gray-400-color,
+	.has-gray-500-color {
+		color: var(--black) !important;
+	}
+
+
+	ul,
+	ol {
+		color: var(--black);
+	}
+
+	li::marker {
+		color: var(--black);
+	}
+}
+
+figure.quote {
+	font-family: var(--ff-base);
+	color: var(--primary-500);
+	font-size: var(--fs-lg);
+	line-height: var(--lh-lg);
+	margin-left: auto;
+	margin-right: auto;
+
+	blockquote {
+		margin: 0;
+		text-wrap: pretty;
+	}
+
+	figcaption {
+		margin-top: var(--mc-spacer-sm);
+		font-size: var(--fs-page);
+		line-height: var(--lh-page);
+	}
+}
+
+mark {
+	padding: 0;
+}
+
+address {
+	font-size: var(--fs-page);
+	line-height: var(--lh-page);
+	font-style: normal;
+	text-wrap: pretty;
+	margin-block-start: 1em;
+	margin-block-end: 0;
+}
