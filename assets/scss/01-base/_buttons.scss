@@ -12,7 +12,7 @@
 	transition: all .2s ease;
 	text-transform: inherit;
 	font-size: var(--fs-sm);
-	font-family: var(--ff-medium);
+	font-weight: 600;
 	line-height: 1;
 	text-decoration: none;
 	cursor: pointer;
@@ -21,7 +21,7 @@
 
 input.wpcf7-submit {
 	font-size: var(--fs-sm);
-	font-family: var(--ff-medium);
+	font-weight: 600;
 	line-height: 1;
 }
 
@@ -619,7 +619,7 @@ main {
 				.wp-element-button.wp-block-button__link {
 					font-size: var(--fs-md);
 					line-height: var(--lh-md);
-					font-family: var(--ff-medium);
+					font-weight: 600;
 					padding: 0 !important;
 					background-color: transparent !important;
 					border: none;

@@ -65,7 +65,7 @@ header#site-header {
         margin: 0 1rem;
         text-decoration: none;
         color: var(--nav-link-mobile-color);
-        font-family: var(--ff-medium);
+        font-weight: 600;
 
         @include media-breakpoint-up(xl) {
           font-size: rem(16);
@@ -218,7 +218,7 @@ header#site-header {
             padding: .5rem 0;
             white-space: normal;
             border-bottom: none;
-            font-family: var(--ff-medium);
+            font-weight: 600;
             text-decoration: none;
 
             @include media-breakpoint-up(xl) {
@@ -529,7 +529,7 @@ header#site-header {
         transition: all .2s ease;
         text-transform: inherit;
         font-size: var(--fs-xs);
-        font-family: var(--ff-bold);
+        font-weight: 800;
         line-height: 1;
         text-decoration: none;
         cursor: pointer;
@@ -668,7 +668,7 @@ header#site-header {
         transition: all .2s ease;
         text-transform: inherit;
         font-size: var(--fs-sm);
-        font-family: var(--ff-bold);
+        font-weight: 800;
         line-height: .9;
         text-decoration: none !important;
         cursor: pointer;
@@ -834,7 +834,7 @@ body.mobile-nav-open {
 
   a,
   p {
-    font-family: var(--ff-medium);
+    font-weight: 600;
     font-size: var(--fs-xs);
     line-height: var(--lh-xs);
   }
@@ -849,7 +849,7 @@ body.mobile-nav-open {
   a.mc-button {
     display: inline-flex;
     width: auto;
-    font-family: var(--ff-bold);
+    font-weight: 800;
     margin: 0 !important;
     color: var(--alert-banner-mobile-link-color) !important;
 
@@ -1035,7 +1035,7 @@ body.mobile-nav-open {
         }
 
         a:not(.dropdown-item) {
-          font-family: var(--ff-bold);
+          font-weight: 800;
           padding: 0;
         }
 

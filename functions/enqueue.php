@@ -2,22 +2,24 @@
 /**
  * Enqueue editor scripts & styles
  */
-if ( ! function_exists( 'mc_base_editor_styles' ) ) {
-	add_action( 'enqueue_block_editor_assets', 'mc_base_editor_styles' );
-	function mc_base_editor_styles( $hook ) {
-		wp_enqueue_style( 'mc-base-editor', plugins_url( 'mc-base/dist/scss/editor-styles.css' ), array(), WEDDING_THEME_VERSION, 'all' );
-		wp_enqueue_script( 'mc-base-block-variations', plugins_url( 'mc-base/dist/js/block-variations.js' ), array( 'wp-blocks', 'wp-dom', 'wp-i18n' ), WEDDING_THEME_VERSION, true );
-		wp_enqueue_script( 'mc-base-block-styles', plugins_url( 'mc-base/dist/js/block-styles.js' ), array( 'wp-blocks', 'wp-dom', 'wp-i18n' ), WEDDING_THEME_VERSION, true );
+
+if ( ! function_exists( 'wedding_theme_styles' ) ) {
+	add_action( 'wp_enqueue_scripts', 'wedding_theme_styles' );
+	function wedding_theme_styles() {
+		wp_enqueue_style( 'main', mc_get_asset_path( 'scss/main-styles.css' ), array(), WEDDING_THEME_VERSION, 'all' );
+		// wp_enqueue_script( 'main', mc_get_asset_path( 'js/main-scripts.js' ), null, WEDDING_THEME_VERSION );
+
 	}
 }
-/**
- * Enqueue frontend scripts & styles
- */
-if ( ! function_exists( 'mc_base_enqueue_assets' ) ) {
-	add_action( 'wp_enqueue_scripts', 'mc_base_enqueue_assets', 10 );
-	function mc_base_enqueue_assets() {
-		wp_enqueue_style( 'mc-base', plugins_url( 'mc-base/dist/scss/main-styles.css' ), array(), WEDDING_THEME_VERSION, 'all' );
-		// wp_enqueue_script( 'mc-base', plugins_url( 'mc-base/dist/js/main-scripts.js' ), null, WEDDING_THEME_VERSION );
 
+/**
+ * Enqueue editor scripts & styles
+ */
+if ( ! function_exists( 'wedding_theme_editor_styles' ) ) {
+	add_action( 'enqueue_block_editor_assets', 'wedding_theme_editor_styles' );
+	function wedding_theme_editor_styles( $hook ) {
+		wp_enqueue_style( 'editor-styles', mc_get_asset_path( 'scss/editor-styles.css' ), array(), WEDDING_THEME_VERSION, 'all' );
+		wp_enqueue_script( 'block-variations', mc_get_asset_path( 'js/block-variations.js' ), array( 'wp-blocks', 'wp-dom', 'wp-i18n' ), WEDDING_THEME_VERSION, true );
+		wp_enqueue_script( 'block-styles', mc_get_asset_path( 'js/block-styles.js' ), array( 'wp-blocks', 'wp-dom', 'wp-i18n' ), WEDDING_THEME_VERSION, true );
 	}
 }

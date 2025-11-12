@@ -23,15 +23,6 @@ body {
 	}
 }
 
-.has-mc-100-background-color {
-	::-moz-selection {
-		background-color: $mc-200;
-	}
-
-	::selection {
-		background-color: $mc-200;
-	}
-}
 
 :root,
 html,
@@ -44,28 +35,7 @@ body {
 	color: var(--gray-400);
 }
 
-b,
-strong {
-	font-family: var(--ff-medium);
-	font-weight: normal;
-}
-
-i,
-em {
-	font-family: var(--ff-italic);
-	font-style: normal;
-}
-
-.fw-medium {
-
-	b,
-	strong {
-		font-family: var(--ff-bold);
-		font-weight: normal;
-	}
-}
-
-a:not(.wp-element-button, .elementor-button-link, .mc-button, .page-numbers) {
+a:not(.wp-element-button, .mc-button) {
 	text-decoration: underline;
 	color: var(--link-color);
 	cursor: pointer;
@@ -89,7 +59,6 @@ HEADINGS & PARAGRAPHS
 @for $i from 1 through 6 {
 
 	h#{$i} {
-		font-family: var(--ff-medium);
 		line-height: var(--h#{$i}-lh);
 		font-size: var(--h#{$i});
 		text-wrap: pretty;
@@ -102,7 +71,7 @@ HEADINGS & PARAGRAPHS
 
 		b,
 		strong {
-			font-family: var(--ff-bold);
+			font-weight: 800;
 		}
 
 		a {
@@ -124,7 +93,6 @@ h2 {
 }
 
 h3 {
-	font-family: var(--ff-bold);
 	margin-block-start: 1.44em;
 }
 
@@ -138,7 +106,6 @@ h4+p {
 
 h5,
 h6 {
-	font-family: var(--ff-bold);
 	margin-block-start: .75em;
 }
 
@@ -180,18 +147,11 @@ aside {
 }
 
 
-// .single-program #program-content div.wp-block-group,
-// .single-story #story-content div.wp-block-group {
-// 	:is(h1, h2, h3, h4, h5, h6, p, ul):first-child {
-// 		margin-top: 0 !important;
-// 	}
-// }
-
 /* ----------------
 OTHER
 ------------------------------*/
 // Lists
-:where(dl, ol, ul):not(.wp-block-post-template, .dropdown-menu, .acf-bl, .columns) {
+:where(dl, ol, ul):not(.wp-block-post-template, .acf-bl, .columns) {
 	font-size: var(--fs-page);
 	line-height: var(--lh-page);
 	margin-block-start: 1em;
@@ -224,74 +184,7 @@ OTHER
 	}
 }
 
-
-// :where(ul):not(.wp-block-post-template, .dropdown-menu, .acf-bl, .columns) {
-// 	li::marker {
-// 		color: var(--mc-brand);
-// 	}
-// }
-//
-// :where(ol):not(.wp-block-post-template, .dropdown-menu, .acf-bl, .columns) {
-// 	li::marker {
-// 		font-family: var(--ff-medium);
-// 		color: var(--black);
-// 	}
-// }
-
-
 // Misc
-.has-mc-brand-background-color {
-
-	h1,
-	h2,
-	h3,
-	h4,
-	p,
-	.has-gray-400-color,
-	.has-gray-500-color {
-		color: var(--black) !important;
-	}
-
-
-	ul,
-	ol {
-		color: var(--black);
-	}
-
-	li::marker {
-		color: var(--black);
-	}
-}
-
-figure.quote {
-	font-family: var(--ff-base);
-	color: var(--primary-500);
-	font-size: var(--fs-lg);
-	line-height: var(--lh-lg);
-	margin-left: auto;
-	margin-right: auto;
-
-	blockquote {
-		margin: 0;
-		text-wrap: pretty;
-	}
-
-	figcaption {
-		margin-top: var(--mc-spacer-sm);
-		font-size: var(--fs-page);
-		line-height: var(--lh-page);
-	}
-}
-
 mark {
 	padding: 0;
-}
-
-address {
-	font-size: var(--fs-page);
-	line-height: var(--lh-page);
-	font-style: normal;
-	text-wrap: pretty;
-	margin-block-start: 1em;
-	margin-block-end: 0;
 }

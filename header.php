@@ -16,7 +16,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,200..900;1,200..900&family=Sacramento&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 		<?php wp_head() ?>
 	</head>
 
@@ -25,7 +25,7 @@
 
 		<?php wp_body_open() ?>
 
-		<header id="site-header" class="header-dropdown top">
+		<header id="site-header" class="d-none header-dropdown top">
 			<div id="site-masthead">
 				<div class="wrapper-header d-flex flex-row align-items-center justify-content-between">
 					<div id="branding" class="flex-shrink-0">

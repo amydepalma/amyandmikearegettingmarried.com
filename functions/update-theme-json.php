@@ -133,6 +133,18 @@ if ( ! function_exists( 'mc_base_update_theme_json' ) ) {
 							'name' => 'Super'
 						),
 					),
+					'fontFamilies' => array(
+						array(
+							'fontFamily' => 'var(--ff-base)',
+							'slug' => 'base',
+							'name' => 'Base'
+						),
+						array(
+							'fontFamily' => 'var(--ff-script)',
+							'slug' => 'script',
+							'name' => 'Script'
+						)
+					),
 				),
 				'spacing' => array(
 					'blockGap' => true,

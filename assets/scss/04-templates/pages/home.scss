@@ -1,0 +1,69 @@
+#std {
+	font-family: 'Great Vibes';
+	font-style: normal;
+	font-weight: 400;
+	// font-size: 90.7609px;
+	font-size: clamp(2rem, 1.524rem + 2.1154vw, 4.0625rem);
+	line-height: 1.3;
+	leading-trim: both;
+	text-edge: cap;
+	text-align: center;
+	color: rgba(0, 0, 0, 0.8);
+}
+
+#names {
+	font-family: 'Lora';
+	font-style: normal;
+	font-weight: 430;
+	// font-size: 234.068px;
+	font-size: clamp(4rem, 2.4567rem + 6.859vw, 10.6875rem);
+	line-height: 1.3;
+	leading-trim: both;
+	text-edge: cap;
+	text-align: center;
+	text-transform: uppercase;
+	color: #000000;
+}
+
+#date {
+	font-family: 'Lora';
+	font-style: normal;
+	font-weight: 480;
+	// font-size: 66.8765px;
+	font-size: clamp(1.5rem, 1.1394rem + 1.6026vw, 3.0625rem);
+	line-height: 1.3;
+	leading-trim: both;
+	text-edge: cap;
+	text-align: center;
+	color: #000000;
+}
+
+#address {
+	position: absolute;
+	bottom: 2rem;
+	font-family: 'Lora';
+	font-style: normal;
+	font-weight: 300;
+	font-size: clamp(1rem, 0.9712rem + 0.1282vw, 1.125rem);
+	line-height: 1.3;
+	leading-trim: both;
+	text-edge: cap;
+	text-align: center;
+	color: rgba(0, 0, 0, 0.8);
+
+	a {
+		text-decoration: none;
+
+		&:hover,
+		&:active,
+		&:focus,
+		&:focus-visible {
+			color: var(--link-hover-color);
+			background-color: transparent !important;
+			border: none !important;
+			text-decoration: underline;
+			text-underline-position: normal;
+			text-underline-offset: rem(4);
+		}
+	}
+}
