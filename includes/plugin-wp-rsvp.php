@@ -89,10 +89,10 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 
 		public function create_admin_menu() {
 			add_menu_page( 'Wedding RSVP', 'Wedding RSVP', 'manage_options', 'wedding-rsvp-main', array( $this, 'admin_page_guests' ), 'dashicons-groups', 6 );
-			add_submenu_page( 'wedding-rsvp-main', 'Menu Options', 'Menu Options', 'manage_options', 'wedding-rsvp-menu', array( $this, 'admin_page_menu' ) );
+			// add_submenu_page( 'wedding-rsvp-main', 'Menu Options', 'Menu Options', 'manage_options', 'wedding-rsvp-menu', array( $this, 'admin_page_menu' ) );
 			add_submenu_page( 'wedding-rsvp-main', 'Settings', 'Settings', 'manage_options', 'wedding-rsvp-settings', array( $this, 'admin_page_settings' ) );
-			add_submenu_page( 'wedding-rsvp-main', 'Email Invites', 'Email Invites', 'manage_options', 'wedding-rsvp-email', array( $this, 'admin_page_email' ) );
-			add_submenu_page( 'wedding-rsvp-main', 'SMS Invites', 'SMS Invites', 'manage_options', 'wedding-rsvp-sms', array( $this, 'admin_page_sms' ) );
+			// add_submenu_page( 'wedding-rsvp-main', 'Email Invites', 'Email Invites', 'manage_options', 'wedding-rsvp-email', array( $this, 'admin_page_email' ) );
+			// add_submenu_page( 'wedding-rsvp-main', 'SMS Invites', 'SMS Invites', 'manage_options', 'wedding-rsvp-sms', array( $this, 'admin_page_sms' ) );
 		}
 
 		private function get_sort_link( $col, $current_by, $current_order ) {
@@ -367,7 +367,7 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 							<strong><?php esc_html_e( 'Add Guest:', 'wedding-party-rsvp' ); ?></strong>
 							<input type="text" name="party_id" required placeholder="<?php esc_attr_e( 'Party ID', 'wedding-party-rsvp' ); ?>" style="width:100px;">
 							<input type="text" name="guest_name" required placeholder="<?php esc_attr_e( 'Name', 'wedding-party-rsvp' ); ?>" style="width:120px;">
-							<div class="wpr-pro-placeholder" style="width:60px; display:inline-block; margin:0 5px;">Kid (Pro)</div>
+							<!-- <div class="wpr-pro-placeholder" style="width:60px; display:inline-block; margin:0 5px;">Kid (Pro)</div> -->
 							<input type="submit" name="wgrsvp_add_guest_btn" class="button button-primary" value="<?php esc_attr_e( 'Add', 'wedding-party-rsvp' ); ?>">
 						</form>
 					</div>
@@ -400,12 +400,12 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 						<tr>
 							<th width="8%"><a href="<?php echo esc_url( $this->get_sort_link( 'party_id', $orderby, $order ) ); ?>"><?php esc_html_e( 'Party ID', 'wedding-party-rsvp' ); ?></a></th>
 							<th width="15%"><a href="<?php echo esc_url( $this->get_sort_link( 'guest_name', $orderby, $order ) ); ?>"><?php esc_html_e( 'Name', 'wedding-party-rsvp' ); ?></a></th>
-							<th width="3%"><?php esc_html_e( 'Kid', 'wedding-party-rsvp' ); ?></th>
+							<!-- <th width="3%"><?php esc_html_e( 'Kid', 'wedding-party-rsvp' ); ?></th> -->
 							<th width="8%"><a href="<?php echo esc_url( $this->get_sort_link( 'rsvp_status', $orderby, $order ) ); ?>"><?php esc_html_e( 'RSVP', 'wedding-party-rsvp' ); ?></a></th>
-							<th width="12%"><?php esc_html_e( 'Menu', 'wedding-party-rsvp' ); ?></th>
-							<th width="5%"><?php esc_html_e( 'Tbl', 'wedding-party-rsvp' ); ?></th>
-							<th width="18%"><?php esc_html_e( 'Contact/Info', 'wedding-party-rsvp' ); ?></th>
-							<th width="15%"><?php esc_html_e( 'Admin Notes', 'wedding-party-rsvp' ); ?></th>
+							<!-- <th width="12%"><?php esc_html_e( 'Menu', 'wedding-party-rsvp' ); ?></th> -->
+							<!-- <th width="5%"><?php esc_html_e( 'Tbl', 'wedding-party-rsvp' ); ?></th> -->
+							<th width="18%"><?php esc_html_e( 'Allergy Info', 'wedding-party-rsvp' ); ?></th>
+							<!-- <th width="15%"><?php esc_html_e( 'Admin Notes', 'wedding-party-rsvp' ); ?></th> -->
 							<th width="16%"><?php esc_html_e( 'Actions', 'wedding-party-rsvp' ); ?></th>
 						</tr>
 					</thead>
@@ -421,9 +421,9 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 									<td><input type="text" name="party_id" value="<?php echo esc_attr( $guest->party_id ); ?>" style="width:100%" placeholder="Party ID"></td>
 									<td><input type="text" name="guest_name" value="<?php echo esc_attr( $guest->guest_name ); ?>" style="width:100%" placeholder="Name"></td>
 
-									<td style="text-align:center;">
+									<!-- <td style="text-align:center;">
 										<div class="wpr-pro-placeholder">Pro</div>
-									</td>
+									</td> -->
 
 									<td><select name="rsvp_status" style="width:100%">
 											<option value="Pending" <?php selected( $guest->rsvp_status, 'Pending' ); ?>>?</option>
@@ -431,7 +431,7 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 											<option value="Declined" <?php selected( $guest->rsvp_status, 'Declined' ); ?>><?php esc_html_e( 'No', 'wedding-party-rsvp' ); ?></option>
 										</select></td>
 
-									<td>
+									<!-- <td>
 										<select name="menu_choice" style="width:100%; margin-bottom:2px; font-size:11px;">
 											<option value=""><?php esc_html_e( '(Adult)', 'wedding-party-rsvp' ); ?></option>
 											<?php
@@ -446,30 +446,30 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 											<div class="wpr-pro-placeholder">Appetizer (Pro)</div>
 											<div class="wpr-pro-placeholder">Hors (Pro)</div>
 										</div>
-									</td>
+									</td> -->
 
-									<td>
+									<!-- <td>
 										<div class="wpr-pro-placeholder"># (Pro)</div>
-									</td>
+									</td> -->
 
 									<td>
-										<input type="text" name="email" value="<?php echo esc_attr( $guest->email ); ?>" placeholder="<?php esc_attr_e( 'Email', 'wedding-party-rsvp' ); ?>" style="width:100%; margin-bottom:2px; font-size:11px;">
-										<input type="text" name="phone" value="<?php echo esc_attr( $guest->phone ); ?>" placeholder="<?php esc_attr_e( 'Phone', 'wedding-party-rsvp' ); ?>" style="width:100%; font-size:11px;">
+										<!-- <input type="text" name="email" value="<?php echo esc_attr( $guest->email ); ?>" placeholder="<?php esc_attr_e( 'Email', 'wedding-party-rsvp' ); ?>" style="width:100%; margin-bottom:2px; font-size:11px;">
+										<input type="text" name="phone" value="<?php echo esc_attr( $guest->phone ); ?>" placeholder="<?php esc_attr_e( 'Phone', 'wedding-party-rsvp' ); ?>" style="width:100%; font-size:11px;"> -->
 										<div style="font-size:10px; color:#666; margin-top:3px;">
 											<?php
 											if ( ! empty( $guest->allergies ) ) {
 												echo '! ' . esc_html( $guest->allergies ) . '<br>';
 											}
-											if ( ! empty( $guest->guest_message ) ) {
-												echo '&#9993; "' . esc_html( substr( $guest->guest_message, 0, 20 ) ) . '..."';
-											}
+											// if ( ! empty( $guest->guest_message ) ) {
+											// 	echo '&#9993; "' . esc_html( substr( $guest->guest_message, 0, 20 ) ) . '..."';
+											// }
 											?>
 										</div>
 									</td>
 
-									<td>
+									<!-- <td>
 										<div class="wpr-pro-placeholder" style="height:50px; line-height:50px;">Admin Notes (Available in Pro)</div>
-									</td>
+									</td> -->
 
 									<td style="white-space:nowrap;">
 										<button type="submit" name="wgrsvp_update_guest" class="button button-primary button-small" title="Save"><span class="dashicons dashicons-saved"></span> Save</button>
@@ -538,7 +538,7 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 				<form method="post">
 					<?php wp_nonce_field( 'wgrsvp_settings_nonce', 'wgrsvp_settings_nonce' ); ?>
 
-					<div style="background:#fff; padding:20px; border:1px solid #ddd; margin-bottom:20px; border-left:4px solid #666;">
+					<!-- <div style="background:#fff; padding:20px; border:1px solid #ddd; margin-bottom:20px; border-left:4px solid #666;">
 						<h3><?php esc_html_e( 'License / Support', 'wedding-party-rsvp' ); ?></h3>
 						<p><?php esc_html_e( 'Enter your license key below for Priority Support and to unlock Pro features.', 'wedding-party-rsvp' ); ?></p>
 
@@ -547,7 +547,7 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 						</p>
 
 						<input type="text" name="wgrsvp_license_key" value="<?php echo esc_attr( $lic ); ?>" style="width:100%; max-width:400px;" placeholder="License Key">
-					</div>
+					</div> -->
 
 					<div style="background:#fff; padding:20px; border:1px solid #ddd; margin-bottom:20px;">
 						<h3><?php esc_html_e( 'Frontend Display', 'wedding-party-rsvp' ); ?></h3>
@@ -564,7 +564,7 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 						<p><label><strong><?php esc_html_e( 'Redirect Success URL:', 'wedding-party-rsvp' ); ?></strong></label><br><input type="text" name="redirect_url" value="<?php echo esc_attr( $s['redirect_url'] ?? '' ); ?>" style="width:100%"></p>
 					</div>
 
-					<div style="background:#fff; padding:20px; border:1px solid #ddd; margin-bottom:20px;">
+					<!-- <div style="background:#fff; padding:20px; border:1px solid #ddd; margin-bottom:20px;">
 						<h3><?php esc_html_e( 'Appearance Settings', 'wedding-party-rsvp' ); ?></h3>
 						<div class="wpr-pro-placeholder" style="padding:20px;">
 							<p><?php esc_html_e( 'Button Colors and Font Sizes are available in the Pro version.', 'wedding-party-rsvp' ); ?></p>
@@ -578,7 +578,7 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 							<p><?php esc_html_e( 'Options to hide Song Requests and Meal Courses are available in the Pro version.', 'wedding-party-rsvp' ); ?></p>
 							<a href="<?php echo esc_url( 'https://landtechwebdesigns.com/wedding-party-rsvp-wordpress-plugin/' ); ?>" target="_blank" class="wpr-pro-link">Upgrade Now</a>
 						</div>
-					</div>
+					</div> -->
 
 					<div style="display:flex; gap:10px;">
 						<input type="submit" name="wgrsvp_save_settings" class="button button-primary" value="<?php esc_attr_e( 'Save Settings', 'wedding-party-rsvp' ); ?>">
@@ -916,20 +916,22 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 			if ( empty( $guests ) ) {
 				$output .= '<form method="post">';
 				$output .= wp_nonce_field( 'wpr_login_action', 'wpr_login_nonce', true, false );
-				$output .= '<div class="wpr-field"><label>' . esc_html__( 'Party ID:', 'wedding-party-rsvp' ) . '</label><input type="text" name="wpr_party_id" required></div><button name="wpr_login_action" class="wpr-button">Find Invitation</button></form>';
+				$output .= '<div class="wpr-field"><label>' . esc_html__( 'Your Party ID', 'wedding-party-rsvp' ) . '</label><input type="text" name="wpr_party_id" placeholder="Firstname Lastname" required></div><button name="wpr_login_action" class="wpr-button">Find Invitation</button></form>';
 			} else {
 				$menus_adult = get_option( $this->opt_menu_adult, array() );
-				$welcome_title = ! empty( $settings['welcome_title'] ) ? stripslashes( $settings['welcome_title'] ) : 'Party: ' . esc_html( $party_id );
+				$welcome_title = ! empty( $settings['welcome_title'] ) ? stripslashes( $settings['welcome_title'] ) : 'Party ID: ' . esc_html( $party_id );
 
 				$output .= '<form method="post">' . wp_nonce_field( 'wpr_frontend_save', '_wpnonce', true, false ) . '<input type="hidden" name="party_id" value="' . esc_attr( $party_id ) . '">';
-				$output .= '<h2>' . esc_html( $welcome_title ) . '</h2>';
+				$output .= '<h2 class="has-text-align-center">' . esc_html( $welcome_title ) . '</h2><p class="has-text-align-center">Guest Count: ' . count( $guests ) . '</p>';
 				$output .= '<input type="text" name="wpr_honey" class="wpr-honey">';
+
+				$i = 0;
 
 				foreach ( $guests as $g ) {
 					$output .= '<div class="wpr-guest-card">';
 					$is_placeholder = in_array( strtolower( $g->guest_name ), array( 'guest', 'plus one', '+1' ) );
 					if ( $is_placeholder ) {
-						$output .= '<div class="wpr-field"><label>' . esc_html__( 'Guest Name:', 'wedding-party-rsvp' ) . '</label><input type="text" name="guest[' . $g->id . '][name_edit]" value="' . esc_attr( $g->guest_name ) . '"></div>';
+						$output .= '<div class="wpr-field"><label>' . esc_html__( 'Please Provide Your Guest\'s Name*', 'wedding-party-rsvp' ) . '</label><input type="text" placeholder="" name="guest[' . $g->id . '][name_edit]" value=""></div>';
 					} else {
 						$output .= '<h3>' . esc_html( $g->guest_name ) . '</h3>';
 						$output .= '<input type="hidden" name="guest[' . $g->id . '][name_hidden]" value="' . esc_attr( $g->guest_name ) . '">';
@@ -937,17 +939,17 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 
 					// Table Display Removed (Pro)
 
-					$output .= '<div class="wpr-field"><label>' . esc_html__( 'Attending?', 'wedding-party-rsvp' ) . '</label><select name="guest[' . $g->id . '][rsvp]" required>';
+					$output .= '<div class="wpr-field"><label>' . esc_html__( 'Attending?*', 'wedding-party-rsvp' ) . '</label><select name="guest[' . $g->id . '][rsvp]" required>';
 					$output .= '<option value="Pending" ' . selected( $g->rsvp_status, 'Pending', false ) . '>' . esc_html__( 'Select...', 'wedding-party-rsvp' ) . '</option>';
 					$output .= '<option value="Accepted" ' . selected( $g->rsvp_status, 'Accepted', false ) . '>' . esc_html__( 'Delighted to attend', 'wedding-party-rsvp' ) . '</option>';
-					$output .= '<option value="Declined" ' . selected( $g->rsvp_status, 'Declined', false ) . '>' . esc_html__( 'Unable to attend', 'wedding-party-rsvp' ) . '</option></select></div>';
+					$output .= '<option value="Declined" ' . selected( $g->rsvp_status, 'Declined', false ) . '>' . esc_html__( 'Regretfully decline', 'wedding-party-rsvp' ) . '</option></select></div>';
 
 					// Only render Adult Menu in Free Version
-					$output .= '<div class="wpr-field"><label>' . esc_html__( 'Entrée', 'wedding-party-rsvp' ) . '</label><select name="guest[' . $g->id . '][menu]"><option value="">' . esc_html__( 'Select...', 'wedding-party-rsvp' ) . '</option>';
-					foreach ( $menus_adult as $m ) {
-						$output .= '<option value="' . esc_attr( $m ) . '" ' . selected( $g->menu_choice, $m, false ) . '>' . esc_html( $m ) . '</option>';
-					}
-					$output .= '</select></div>';
+					// $output .= '<div class="wpr-field"><label>' . esc_html__( 'Entrée', 'wedding-party-rsvp' ) . '</label><select name="guest[' . $g->id . '][menu]"><option value="">' . esc_html__( 'Select...', 'wedding-party-rsvp' ) . '</option>';
+					// foreach ( $menus_adult as $m ) {
+					// 	$output .= '<option value="' . esc_attr( $m ) . '" ' . selected( $g->menu_choice, $m, false ) . '>' . esc_html( $m ) . '</option>';
+					// }
+					// $output .= '</select></div>';
 
 					$output .= '<div class="wpr-field"><label>' . esc_html__( 'Dietary Restrictions', 'wedding-party-rsvp' ) . '</label>';
 					$allergies = array( 'Gluten Free', 'Dairy Free', 'Vegetarian', 'Vegan', 'Nut Allergy' );
@@ -959,15 +961,19 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 					}
 					$output .= '</div><input type="text" name="guest[' . $g->id . '][dietary]" value="' . esc_attr( $g->dietary_restrictions ) . '" placeholder="' . esc_attr__( 'Other...', 'wedding-party-rsvp' ) . '"></div>';
 
-					$output .= '<div class="wpr-field"><label>' . esc_html__( 'I promise to dance if you play:', 'wedding-party-rsvp' ) . '</label><input type="text" name="guest[' . $g->id . '][song]" value="' . esc_attr( $g->song_request ) . '"></div>';
+					// $output .= '<div class="wpr-field"><label>' . esc_html__( 'I promise to dance if you play:', 'wedding-party-rsvp' ) . '</label><input type="text" name="guest[' . $g->id . '][song]" value="' . esc_attr( $g->song_request ) . '"></div>';
+//
+// 					$output .= '<div class="wpr-field"><label>' . esc_html__( 'Message to Couple:', 'wedding-party-rsvp' ) . '</label><textarea name="guest[' . $g->id . '][message]" rows="2" placeholder="Note to the bride & groom...">' . esc_textarea( $g->guest_message ) . '</textarea></div>';
 
-					$output .= '<div class="wpr-field"><label>' . esc_html__( 'Message to Couple:', 'wedding-party-rsvp' ) . '</label><textarea name="guest[' . $g->id . '][message]" rows="2" placeholder="Note to the bride & groom...">' . esc_textarea( $g->guest_message ) . '</textarea></div>';
+					// $output .= '<div class="wpr-field"><label>' . esc_html__( 'Email', 'wedding-party-rsvp' ) . '</label><input type="email" name="guest[' . $g->id . '][email]" value="' . esc_attr( $g->email ) . '"></div>';
+					// $output .= '<div class="wpr-field"><label>' . esc_html__( 'Phone', 'wedding-party-rsvp' ) . '</label><input type="text" name="guest[' . $g->id . '][phone]" value="' . esc_attr( $g->phone ) . '"></div>';
 
-					$output .= '<div class="wpr-field"><label>' . esc_html__( 'Email', 'wedding-party-rsvp' ) . '</label><input type="email" name="guest[' . $g->id . '][email]" value="' . esc_attr( $g->email ) . '"></div>';
-					$output .= '<div class="wpr-field"><label>' . esc_html__( 'Phone', 'wedding-party-rsvp' ) . '</label><input type="text" name="guest[' . $g->id . '][phone]" value="' . esc_attr( $g->phone ) . '"></div>';
-					$output .= '<div class="wpr-field"><label>' . esc_html__( 'Mailing Address', 'wedding-party-rsvp' ) . '</label><textarea name="guest[' . $g->id . '][address]">' . esc_textarea( $g->address ) . '</textarea></div>';
+					if ( $i === 0 ) {
+						$output .= '<div class="wpr-field"><label>' . esc_html__( 'Mailing Address', 'wedding-party-rsvp' ) . '</label><textarea name="guest[' . $g->id . '][address]">' . esc_textarea( $g->address ) . '</textarea></div>';
+					}
 
 					$output .= '</div>';
+					$i++;
 				}
 				$output .= '<button name="wpr_submit_rsvp" class="wpr-button">Submit RSVP</button></form>';
 			}
@@ -977,28 +983,28 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 		// --- EMAIL PAGE (Upsell Placeholder) ---
 		public function admin_page_email() {
 			?>
-			<div class="wrap">
+			<!-- <div class="wrap">
 				<h1><?php esc_html_e( 'Email Invites', 'wedding-party-rsvp' ); ?></h1>
 				<div style="background:#fff; border:1px solid #ccc; padding:30px; text-align:center; max-width:600px; margin-top:20px;">
 					<h2><?php esc_html_e( 'Send Invites Directly', 'wedding-party-rsvp' ); ?></h2>
 					<p><?php esc_html_e( 'The Pro version includes a complete Email Invitation system. Send customized invites to your guests with one click.', 'wedding-party-rsvp' ); ?></p>
 					<a href="<?php echo esc_url( 'https://landtechwebdesigns.com/wedding-party-rsvp-wordpress-plugin/' ); ?>" target="_blank" class="button button-primary button-large"><?php esc_html_e( 'Upgrade to Pro', 'wedding-party-rsvp' ); ?></a>
 				</div>
-			</div>
+			</div> -->
 			<?php
 		}
 
 		// --- SMS PAGE (Upsell Placeholder) ---
 		public function admin_page_sms() {
 			?>
-			<div class="wrap">
+			<!-- <div class="wrap">
 				<h1><?php esc_html_e( 'SMS Invites', 'wedding-party-rsvp' ); ?></h1>
 				<div style="background:#fff; border:1px solid #ccc; padding:30px; text-align:center; max-width:600px; margin-top:20px;">
 					<h2><?php esc_html_e( 'Text Your Guests', 'wedding-party-rsvp' ); ?></h2>
 					<p><?php esc_html_e( 'Upgrade to the Pro version to integrate with Twilio and send SMS invitations directly to your guest list.', 'wedding-party-rsvp' ); ?></p>
 					<a href="<?php echo esc_url( 'https://landtechwebdesigns.com/wedding-party-rsvp-wordpress-plugin/' ); ?>" target="_blank" class="button button-primary button-large"><?php esc_html_e( 'Upgrade to Pro', 'wedding-party-rsvp' ); ?></a>
 				</div>
-			</div>
+			</div> -->
 			<?php
 		}
 	}
