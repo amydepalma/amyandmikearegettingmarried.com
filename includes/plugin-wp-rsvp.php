@@ -604,6 +604,12 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 
 		// --- PAGE: Menu Options ---
 		public function admin_page_menu() {
+
+			// Security: Check user capabilities
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'wedding-party-rsvp' ) );
+			}
+
 			// SECURITY FIX: Use filter_input with sanitized flag & Verify Nonce
 			$menu_nonce = filter_input( INPUT_POST, 'wgrsvp_menu_nonce', FILTER_SANITIZE_SPECIAL_CHARS );
 			if ( $menu_nonce && wp_verify_nonce( $menu_nonce, 'wgrsvp_menu_nonce' ) ) {
@@ -659,6 +665,11 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 
 		// --- ADMIN ACTIONS ---
 		private function handle_admin_actions() {
+			// Security: Check user capabilities for all admin actions
+			if ( ! current_user_can( 'manage_options' ) ) {
+				return;
+			}
+
 			global $wpdb;
 
 			// SECURITY FIX: Use filter_input with sanitized flag
@@ -727,6 +738,12 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 
 		// --- CSV IMPORT/EXPORT ---
 		public function handle_csv_export() {
+			// Security: Check user capabilities
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'wedding-party-rsvp' ) );
+			}
+
+
 			// SECURITY FIX: Use filter_input with sanitized flag
 			$export_nonce = filter_input( INPUT_POST, 'wgrsvp_export_nonce', FILTER_SANITIZE_SPECIAL_CHARS );
 			if ( $export_nonce && wp_verify_nonce( $export_nonce, 'wgrsvp_export_nonce' ) ) {
