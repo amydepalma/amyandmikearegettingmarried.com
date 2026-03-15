@@ -1,15 +1,15 @@
-<?php // I move this here for ease since I modified it and don't plan to update it sunless necessary. ?>
+<?php // I move this here for ease since I modified it and don't plan to update it unless necessary. ?>
 
 <?php
 /*
 Plugin Name: Wedding Party RSVP
 Description: Simple and secure RSVP system. Manage guest lists and adult menu choices.
-Version: 7.2
+Version: 7.3.2
 Author: Land Tech Web Designs, Corp
 Author URI: https://landtechwebdesigns.com
 Plugin URI: https://landtechwebdesigns.com/wedding-party-rsvp-wordpress-plugin/
 Requires at least: 6.0
-Tested up to: 6.9
+Tested up to: 6.9.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 */
@@ -47,6 +47,11 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 		}
 
 		public function activate_plugin() {
+			// Security: Check user capabilities
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'wedding-party-rsvp' ) );
+			}
+
 			global $wpdb;
 			$charset_collate = $wpdb->get_charset_collate();
 
