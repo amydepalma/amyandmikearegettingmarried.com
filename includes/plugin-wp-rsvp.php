@@ -491,6 +491,11 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 
 		// --- PAGE: General Settings ---
 		public function admin_page_settings() {
+			// Security: Check user capabilities
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'wedding-party-rsvp' ) );
+			}
+
 			// SECURITY FIX: Use filter_input with sanitized flag
 			$reset_nonce = filter_input( INPUT_POST, 'wgrsvp_reset_nonce', FILTER_SANITIZE_SPECIAL_CHARS );
 			if ( $reset_nonce && wp_verify_nonce( $reset_nonce, 'wgrsvp_reset_nonce' ) ) {
