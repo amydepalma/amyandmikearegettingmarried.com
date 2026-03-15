@@ -47,11 +47,6 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 		}
 
 		public function activate_plugin() {
-			// Security: Check user capabilities
-			if ( ! current_user_can( 'manage_options' ) ) {
-				wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'wedding-party-rsvp' ) );
-			}
-
 			global $wpdb;
 			$charset_collate = $wpdb->get_charset_collate();
 
@@ -229,6 +224,11 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 
 		// --- PAGE: Guest List & Dashboard ---
 		public function admin_page_guests() {
+			// Security: Check user capabilities
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'wedding-party-rsvp' ) );
+			}
+
 			global $wpdb;
 			add_thickbox();
 
