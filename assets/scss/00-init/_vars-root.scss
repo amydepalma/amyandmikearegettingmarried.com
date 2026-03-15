@@ -17,8 +17,8 @@
 	--ff-base: "Lora",
 	Georgia,
 	serif;
-	--ff-script: "Great Vibes",
-	cursive;
+	--ff-sans: "Open Sans",
+	sans-serif;
 
 	--lh-base: 1.85;
 
@@ -53,34 +53,12 @@
 	}
 
 	// Theme overrides
-	--primary-brand: var(--mc-brand);
-	--primary-brand-rgb: var(--mc-brand-rgb);
-	--primary-100: var(--mc-100);
-	--primary-200: var(--mc-200);
-	--primary-400: var(--mc-400);
-	--primary-500: var(--mc-500);
+	--primary-brand: var(--orange);
 
 	--primary-brand-btn-text: var(--white);
-	--primary-brand-btn-bkg: var(--black);
-	--primary-brand-btn-hover-text: var(--black);
-	--primary-brand-btn-hover-bkg: var(--primary-brand);
-
-	--primary-brand-outline-btn-text: var(--black);
-	--primary-brand-outline-btn-border: var(--primary-brand);
-	--primary-brand-outline-btn-hover-text: var(--black);
-	--primary-brand-outline-btn-hover-bkg: var(--primary-brand);
-	--primary-brand-outline-btn-hover-border: var(--primary-brand);
-
-	--primary-brand-white-btn-text: var(--black);
-	--primary-brand-white-btn-hover-text: var(--white);
-	--primary-brand-white-btn-hover-bkg: var(--black);
-	--primary-brand-white-btn-hover-border: var(--black);
-
-	--primary-brand-white-outline-btn-text: var(--black);
-	--primary-brand-white-outline-btn-border: var(--primary-brand);
-	--primary-brand-white-outline-btn-hover-text: var(--white);
-	--primary-brand-white-outline-btn-hover-bkg: var(--black);
-	--primary-brand-white-outline-btn-hover-border:var(--black);
+	--primary-brand-btn-bkg: var(--green);
+	--primary-brand-btn-hover-text: var(--green);
+	--primary-brand-btn-hover-bkg: var(--green-light);
 
 	// Typography
 	--link-color: #2678a6;
@@ -109,42 +87,42 @@
 	--utility-bkg-color: var(--gray-500);
 
 	--utility-social-icon-color: #979797;
-	--utility-social-icon-mobile-color: var(--primary-brand);
+	--utility-social-icon-mobile-color: var(--orange);
 	--utility-social-text-mobile-color: var(--white);
-	--nav-mobile-nav-bkg-color: var(--primary-brand);
+	--nav-mobile-nav-bkg-color: var(--orange);
 	--nav-mobile-utility-bkg-color: var(--black);
-	--nav-mobile-menu-toggle-icon-color: var(--white);
+	--nav-mobile-menu-toggle-icon-color: var(--black);
 	--nav-search-icon-mobile-color: var(--gray-500);
 	--nav-search-link-open-desktop-color:var(--white);
-	--nav-search-icon-open-desktop-color:var(--primary-brand);
+	--nav-search-icon-open-desktop-color:var(--orange);
 	--nav-search-icon-close-desktop-color: var(--gray-000);
 
-	--nav-current-underline: var(--primary-brand);
+	--nav-current-underline: var(--orange);
 	--nav-link-mobile-color: var(--gray-500);
-	--nav-link-desktop-color: var(--primary-brand);
+	--nav-link-desktop-color: var(--orange);
 	--nav-link-desktop-color-hover: var(--white);
-	--nav-link-desktop-color-underline-hover: var(--primary-brand);
-	--nav-dropdown-desktop-bkg-color: var(--primary-brand);
+	--nav-link-desktop-color-underline-hover: var(--orange);
+	--nav-dropdown-desktop-bkg-color: var(--orange);
 	--nav-sublink-desktop-color: var(--gray-500);
 	--nav-sublink-desktop-color-hover: var(--black);
 	--nav-link-mobile-sublink-line-color: var(--gray-500);
 	--nav-cta-btn-color: var(--gray-500);
 	--nav-cta-btn-bkg-color: var(--white);
 	--nav-cta-btn-color-hover: var(--gray-500);
-	--nav-cta-btn-bkg-color-hover: var(--primary-brand);
+	--nav-cta-btn-bkg-color-hover: var(--orange);
 	--nav-cta-icon-color: var(--white);
 
 	--alert-banner-desktop-color: var(--gray-100);
-	--alert-banner-desktop-link-color: var(--mc-brand);
+	--alert-banner-desktop-link-color: var(--orange);
 	--alert-banner-desktop-bkg: var(--gray-100);
 	--alert-banner-mobile-color: var(--gray-100);
-	--alert-banner-mobile-link-color: var(--mc-brand);
+	--alert-banner-mobile-link-color: var(--orange);
 	--alert-banner-mobile-bkg: var(--gray-500);
 
 	// Footer
 	--footer-bkg: var(--black);
 	--footer-bkg-mobile-line: var(--gray-400);
-	--footer-menu-title: var(--primary-brand);
+	--footer-menu-title: var(--orange);
 	--footer-menu-link: #c5c5c5;
 
 	--footer-meta-color: #c5c5c5;
@@ -154,7 +132,7 @@
 	--footer-secondary-copy: #818181;
 	--footer-secondary-menu-link: #818181;
 	--footer-secondary-socials:var(--gray-200);
-	--footer-secondary-socials-hover:var(--primary-brand);
+	--footer-secondary-socials-hover:var(--orange);
 
 	--footer-newsletter-bkg: var(--gray-500);
 	--footer-newsletter-input-bkg: var(--gray-100);
@@ -168,13 +146,13 @@
 	/* ----------------
 		FORMS
 		------------------------------*/
-	--form-control-color: var(--mc-brand);
+	--form-control-color: var(--orange);
 	--form-input-bkg-color: rgba(var(--gray-brand-rgb), .025);
 	--form-border-color: rgba(var(--gray-brand-rgb), .2);
 	--form-fieldset-color: var(--gray-brand);
 	--form-success: #038f0d;
 	--form-error: #bf2020;
-	--form-icon-radio-hover-bkg-color: var(--mc-brand);
+	--form-icon-radio-hover-bkg-color: var(--orange);
 	--form-icon-radio-hover-color: var(--black);
 	/* ----------------
 		UTILS

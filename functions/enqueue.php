@@ -7,7 +7,7 @@ if ( ! function_exists( 'wedding_theme_styles' ) ) {
 	add_action( 'wp_enqueue_scripts', 'wedding_theme_styles' );
 	function wedding_theme_styles() {
 		wp_enqueue_style( 'main', mc_get_asset_path( 'scss/main-styles.css' ), array(), WEDDING_THEME_VERSION, 'all' );
-		// wp_enqueue_script( 'main', mc_get_asset_path( 'js/main-scripts.js' ), null, WEDDING_THEME_VERSION );
+		wp_enqueue_script( 'main', mc_get_asset_path( 'js/nav.js' ), null, WEDDING_THEME_VERSION );
 
 	}
 }

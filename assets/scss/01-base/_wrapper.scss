@@ -14,20 +14,3 @@
 		margin-inline: auto;
 	}
 }
-
-.wrapper {
-	@extend .wrapper-xl;
-}
-
-.wrapper-narrow {
-	--content-max-width: 900px;
-	max-width: var(--content-max-width);
-	margin-inline: auto;
-	padding-inline: calc(var(--padding-inline) * 0.5);
-}
-
-.mw-narrow {
-	width: 100%;
-	max-width: 900px;
-	margin-inline: auto;
-}

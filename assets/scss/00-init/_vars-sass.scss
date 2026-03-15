@@ -5,7 +5,7 @@ LAYOUT & BREAKPOINTS
 // 782 is Wordpress
 $breakpoints: (
 	"xxs": 0,
-	"xs": 475px,
+	"xs": 360px,
 	"sm": 576px,
 	"md": 782px,
 	"lg": 992px,
@@ -74,53 +74,10 @@ $lineHeights: (
 /* ----------------
 COLORS
 // ------------------------------*/
-
-$mc-100: #FFF6E1;
-$mc-200: #FFE2A5;
-$mc-brand: #FFC000;
-$mc-400: #E5AE10;
-$mc-500: #8d6b07;
-$mc-brand-rgb: '255, 192, 0';
-
-$cip-100: #f4f9fe;
-$cip-200: #6583BF;
-$cip-brand: #3A5CAE;
-$cip-400: #294ba1;
-$cip-500: #07366E;
-$cip-brand-rgb: '58, 92, 172';
-
-$cdc-100: #F5F9F9;
-$cdc-200: #aeded5;
-$cdc-brand: #008478;
-$cdc-400: #13625A;
-$cdc-500: #15423D;
-$cdc-brand-rgb: '0, 132, 120';
-
-$mc-purple: #962eff;
-$mc-purple-rgb: '150, 46, 255';
-
-$mc-green: #6CBE45;
-$mc-green-rgb: '140, 198, 69';
-
-$mc-blue: #45A0D4;
-$mc-blue-rgb: '69, 160, 212';
-
-$mc-orange: #fe7a00;
-$mc-orange-rgb: '254, 122, 0';
-
-$mdc-100: #EEF6FB;
-$mdc-200: #9CCCE8;
-$mdc-brand: var(--mc-blue);
-$mdc-400: #2B83B6;
-$mdc-500: #1F5F84;
-$mdc-brand-rgb: var(--mc-blue-rgb);
-
-$ms-100: #f2f3f3;
-$ms-200: #ACADAF;
-$ms-brand: #6D6E71;
-$ms-400: #464646;
-$ms-500: #212529;
-$ms-brand-rgb: '109, 110, 113';
+$orange: #AD5838;
+$navy: #00041D;
+$green: #55694E;
+$green-light: #b9cfb1;
 
 $gray-000: #f8f9fa;
 $gray-100: #f2f2f2;
@@ -141,49 +98,9 @@ $primary-500: var(--primary-500);
 $primary-brand-rgb: var(--primary-brand-rgb);
 
 $theme-colors: (
-	"mc-100": $mc-100,
-	"mc-200": $mc-200,
-	"mc-brand": $mc-brand,
-	"mc-brand-rgb": $mc-brand-rgb,
-	"mc-400": $mc-400,
-	"mc-500": $mc-500,
-
-	"cip-100": $cip-100,
-	"cip-200": $cip-200,
-	"cip-brand": $cip-brand,
-	"cip-brand-rgb": $cip-brand-rgb,
-	"cip-400": $cip-400,
-	"cip-500": $cip-500,
-
-	"cdc-100": $cdc-100,
-	"cdc-200": $cdc-200,
-	"cdc-brand": $cdc-brand,
-	"cdc-brand-rgb": $cdc-brand-rgb,
-	"cdc-400": $cdc-400,
-	"cdc-500": $cdc-500,
-
-	"mc-blue": $mc-blue,
-	"mc-blue-rgb": $mc-blue-rgb,
-	"mc-purple": $mc-purple,
-	"mc-purple-rgb": $mc-purple-rgb,
-	"mc-green": $mc-green,
-	"mc-green-rgb": $mc-green-rgb,
-	"mc-orange": $mc-orange,
-	"mc-orange-rgb": $mc-orange-rgb,
-
-	"mdc-100": $mdc-100,
-	"mdc-200": $mdc-200,
-	"mdc-brand": $mdc-brand,
-	"mdc-brand-rgb": $mdc-brand-rgb,
-	"mdc-400": $mdc-400,
-	"mdc-500": $mdc-500,
-
-	"ms-100": $ms-100,
-	"ms-200": $ms-200,
-	"ms-brand": $ms-brand,
-	"ms-brand-rgb": $ms-brand-rgb,
-	"ms-400": $ms-400,
-	"ms-500": $ms-500,
+	"orange": $orange,
+	"navy": $navy,
+	"green": $green,
 
 	"gray-000": $gray-000,
 	"gray-100": $gray-100,

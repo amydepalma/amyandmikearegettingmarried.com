@@ -137,12 +137,12 @@ if ( ! function_exists( 'mc_base_update_theme_json' ) ) {
 						array(
 							'fontFamily' => 'var(--ff-base)',
 							'slug' => 'base',
-							'name' => 'Base'
+							'name' => 'Serif'
 						),
 						array(
-							'fontFamily' => 'var(--ff-script)',
-							'slug' => 'script',
-							'name' => 'Script'
+							'fontFamily' => 'var(--ff-sans)',
+							'slug' => 'sans',
+							'name' => 'Sans'
 						)
 					),
 				),

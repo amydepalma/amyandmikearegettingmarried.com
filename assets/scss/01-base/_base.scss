@@ -1,0 +1,17 @@
+body {
+	background-color: #FBF7F6;
+}
+
+#site-wrapper {
+	max-width: 80ch;
+	margin: 10vw 5vw;
+	border-radius: rem(3);
+	background-position: bottom center;
+	background-repeat: no-repeat;
+	padding-bottom: rem(250);
+
+	@include media-breakpoint-up(md) {
+		margin: 10vw auto;
+		aspect-ratio: 1/1.25;
+	}
+}

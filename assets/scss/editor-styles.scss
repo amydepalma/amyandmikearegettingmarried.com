@@ -21,38 +21,40 @@ html {
 	@include font-smoothing();
 	font-size: 16px;
 	font-family: var(--ff-base);
+	font-optical-sizing: auto;
 	font-weight: normal;
 	font-style: normal;
 	line-height: normal;
 	color: var(--gray-400);
 	@import "01-base/typography";
-	@import "01-base/columns";
-	@import "01-base/wrapper";
+	// @import "01-base/columns";
+	// @import "01-base/wrapper";
 	@import "01-base/buttons";
 	@import "01-base/forms";
-	@import "01-base/table";
+	// @import "01-base/table";
 
 	/* Utilities */
-	@import "02-utilities/interactions";
+	// @import "02-utilities/interactions";
 	@import "02-utilities/layout";
 	@import "02-utilities/links";
-	@import "02-utilities/lists";
-	@import "02-utilities/media";
+	// @import "02-utilities/lists";
+	// @import "02-utilities/media";
 	@import "02-utilities/misc";
 	@import "02-utilities/spacing";
 	@import "02-utilities/text";
 
 	/* Components */
-	@import "03-components/cover";
-	@import "03-components/details";
-	@import "03-components/group";
-	@import "03-components/image";
-	@import "03-components/separator";
+	// @import "03-components/cover";
+	// @import "03-components/details";
+	// @import "03-components/group";
+	// @import "03-components/image";
+	// @import "03-components/separator";
 
 	/* Templates */
-	@import "04-templates/pages/home";
+	// @import "04-templates/pages/home";
 
 	/* Other dependencies  */
+	@import "05-plugins/wp-rsvp";
 }
 
 // ---------------------------------------------------

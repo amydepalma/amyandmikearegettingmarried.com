@@ -1,9 +1,9 @@
 $typeUtilities: (
   "font-family": (responsive: false,
     property: font-family,
-    class: fw,
+    class: ff,
     values: (base: var(--ff-base),
-      script: var(--ff-script),
+      sans: var(--ff-sans),
     )),
   "font-weight": (responsive: false,
     property: font-weight,
@@ -49,6 +49,11 @@ $typeUtilities: (
   .has-#{$name}-font-size {
     line-height: var(--lh-#{$name});
   }
+}
+
+.ff-base {
+  font-variation-settings:
+    "wdth" 100;
 }
 
 /* ----------------
