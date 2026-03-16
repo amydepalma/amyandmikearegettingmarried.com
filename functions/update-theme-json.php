@@ -75,6 +75,21 @@ if ( ! function_exists( 'mc_base_update_theme_json' ) ) {
 							'color' => 'var(--white)',
 							'name' => 'White'
 						),
+						array(
+							'slug' => 'orange',
+							'color' => 'var(--orange)',
+							'name' => 'Orange'
+						),
+						array(
+							'slug' => 'green',
+							'color' => 'var(--green)',
+							'name' => 'Green'
+						),
+						array(
+							'slug' => 'navy',
+							'color' => 'var(--navy)',
+							'name' => 'Navy'
+						),
 					),
 				),
 				'typography' => array(
@@ -83,55 +98,30 @@ if ( ! function_exists( 'mc_base_update_theme_json' ) ) {
 					'customFontSize' => false,
 					'fontSizes' => array(
 						array(
-							'size' => 'var(--fs-xs)',
-							'slug' => 'xs',
-							'name' => 'Extra Small'
-						),
-						array(
-							'size' => 'var(--fs-sm)',
-							'slug' => 'sm',
-							'name' => 'Small'
-						),
-						array(
 							'size' => 'var(--fs-page)',
 							'slug' => 'page',
-							'name' => 'Page (H5 & H6)'
+							'name' => 'Page'
 						),
 						array(
 							'size' => 'var(--fs-md)',
 							'slug' => 'md',
-							'name' => 'Medium (H4)'
+							'name' => 'Medium (Page)'
 						),
 						array(
 							'size' => 'var(--fs-lg)',
 							'slug' => 'lg',
-							'name' => 'Large (H3)'
+							'name' => 'Large (H2)'
 						),
 						array(
 							'size' => 'var(--fs-xl)',
 							'slug' => 'xl',
-							'name' => 'Extra Large (H2)'
+							'name' => 'Extra Large (H1)'
 						),
 						array(
 							'size' => 'var(--fs-xxl)',
 							'slug' => 'xxl',
 							'name' => 'Extra Extra Large'
-						),
-						array(
-							'size' => 'var(--fs-giant)',
-							'slug' => 'giant',
-							'name' => 'Giant (H1)'
-						),
-						array(
-							'size' => 'var(--fs-jumbo)',
-							'slug' => 'jumbo',
-							'name' => 'Jumbo'
-						),
-						array(
-							'size' => 'var(--fs-super)',
-							'slug' => 'super',
-							'name' => 'Super'
-						),
+						)
 					),
 					'fontFamilies' => array(
 						array(
@@ -306,14 +296,34 @@ if ( ! function_exists( 'mc_base_update_theme_json' ) ) {
 									'name' => 'White'
 								),
 								array(
-									'slug' => 'gray-100',
-									'color' => 'var(--gray-100)',
-									'name' => 'Gray 100'
+									'slug' => 'orange',
+									'color' => 'var(--orange)',
+									'name' => 'Orange'
 								),
 								array(
-									'slug' => 'gray-brand',
-									'color' => 'var(--gray-brand)',
-									'name' => 'Gray Brand'
+									'slug' => 'orange-dark',
+									'color' => 'var(--orange-dark)',
+									'name' => 'Orange Dark'
+								),
+								array(
+									'slug' => 'green',
+									'color' => 'var(--green)',
+									'name' => 'Green'
+								),
+								array(
+									'slug' => 'green-dark',
+									'color' => 'var(--green-dark)',
+									'name' => 'Green Dark'
+								),
+								array(
+									'slug' => 'navy',
+									'color' => 'var(--navy)',
+									'name' => 'Navy'
+								),
+								array(
+									'slug' => 'navy-dark',
+									'color' => 'var(--navy-dark)',
+									'name' => 'Navy Dark'
 								),
 								array(
 									'slug' => 'black',

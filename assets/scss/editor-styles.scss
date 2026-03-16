@@ -19,8 +19,16 @@ html {
 
 	/* Content */
 	@include font-smoothing();
-	font-size: 16px;
+	font-size: var(--fs-md);
 	font-family: var(--ff-base);
+
+
+	font-size: var(--fs-md);
+	line-height: var(--lh-md);
+	text-wrap: pretty;
+
+
+
 	font-optical-sizing: auto;
 	font-weight: normal;
 	font-style: normal;
@@ -44,14 +52,14 @@ html {
 	@import "02-utilities/text";
 
 	/* Components */
-	// @import "03-components/cover";
+	@import "03-components/cover";
 	// @import "03-components/details";
-	// @import "03-components/group";
+	@import "03-components/group";
 	// @import "03-components/image";
 	// @import "03-components/separator";
 
 	/* Templates */
-	// @import "04-templates/pages/home";
+	@import "04-templates/home";
 
 	/* Other dependencies  */
 	@import "05-plugins/wp-rsvp";
@@ -163,19 +171,19 @@ body {
 // CUSTOM MC-* BLOCK STYLING
 // ---------------------------------------------------
 .block-editor-block-types-list__list-item button[class*="mc-"]:not(:disabled) {
-	color: var(--primary-brand) !important;
+	color: var(--orange) !important;
 
 	.block-editor-block-types-list__item-title {
-		color: var(--primary-brand) !important;
+		color: var(--orange) !important;
 	}
 
 	svg,
 	svg path {
-		fill: var(--primary-brand) !important;
+		fill: var(--orange) !important;
 	}
 
 	.dashicon.dashicons::before {
-		color: var(--primary-brand) !important;
+		color: var(--orange) !important;
 	}
 
 	&:hover,

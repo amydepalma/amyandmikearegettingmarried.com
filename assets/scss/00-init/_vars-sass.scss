@@ -28,39 +28,15 @@ TYPE
 @link https://clamp.font-size.app/?config=eyJyb290IjoiMTYiLCJtaW5XaWR0aCI6IjQyNXB4IiwibWF4V2lkdGgiOiI3ODJweCIsIm1pbkZvbnRTaXplIjoiMTYuNXB4IiwibWF4Rm9udFNpemUiOiIxOC41cHgifQ%3D%3D
 ------------------------------*/
 $fontSizes: (
-	"xs": rem(13.5),
-
-	// 14 → 16
-	"sm": clamp(0.875rem, 0.7262rem + 0.5602vw, 1rem),
-
-	// 16.5 → 18.5 (Body, H5, H6)
-	"page": clamp(1.03125rem, 0.8824rem + 0.5602vw, 1.15625rem),
-
-	// 20.2 → 22.2 (H4)
-	"md": clamp(1.2625rem, 1.1137rem + 0.5602vw, 1.3875rem),
-
-	// 24.64 → 26.64 (H3)
-	"lg": clamp(1.54rem, 1.3912rem + 0.5602vw, 1.665rem),
-
-	// 29.97 → 31.97 (H2)
-	"xl": clamp(1.873125rem, 1.7243rem + 0.5602vw, 1.998125rem),
-
-	// 36.36 → 38.36
-	"xxl": clamp(2.2725rem, 2.1237rem + 0.5602vw, 2.3975rem),
-
-	// 41.03 → 46.03 (H1)
-	"giant": clamp(2rem, 0.9561rem + 3.93vw, 2.876875rem),
-
-	// 32.24  → 55.24
-	"jumbo": clamp(2.015rem, 0.3037rem + 6.4426vw, 3.4525rem),
-
-	// 36.29 → 66.29
-	"super":clamp(2.268125rem, 0.036rem + 8.4034vw, 4.143125rem),
+	"page": clamp(0.8rem, 0.06vi + 0.79rem, 0.84rem),
+	"md": clamp(1rem, 0.17vi + 0.96rem, 1.13rem),
+	"lg": clamp(1.25rem, 0.33vi + 1.18rem, 1.5rem),
+	"xl": clamp(1.56rem, 0.58vi + 1.43rem, 2rem),
+	"xxl": clamp(1.95rem, 0.95vi + 1.74rem, 2.66rem),
 );
 
+
 $lineHeights: (
-	"xs": 1.6,
-	"sm": 1.8,
 	"page": 1.785,
 	"md": 1.65,
 	"lg": 1.5,
@@ -68,34 +44,28 @@ $lineHeights: (
 	"xxl": 1.45,
 	"giant": 1.375,
 	"jumbo": 1.25,
-	"super": 1.25
 );
 
 /* ----------------
 COLORS
 // ------------------------------*/
 $orange: #AD5838;
-$navy: #00041D;
+$orange-dark: #AD5838;
+$navy: #162B5E;
+$navy-dark: #00041D;
 $green: #55694E;
+$green-dark: #63735C;
 $green-light: #b9cfb1;
 
 $gray-000: #f8f9fa;
 $gray-100: #f2f2f2;
 $gray-200: #d0d0d0;
-$gray-brand: var(--ms-brand);
-$gray-400: var(--ms-400);
-$gray-500: var(--ms-500);
-$gray-brand-rgb: var(--ms-brand-rgb);
+$gray-300: #6D6E71;
+$gray-400: #464646;
+$gray-500: #212529;
 
 $white: #FFFFFF;
 $black: #000000;
-
-$primary-100: var(--primary-100);
-$primary-200: var(--primary-200);
-$primary-brand: var(--primary-brand);
-$primary-400: var(--primary-400);
-$primary-500: var(--primary-500);
-$primary-brand-rgb: var(--primary-brand-rgb);
 
 $theme-colors: (
 	"orange": $orange,
@@ -105,19 +75,11 @@ $theme-colors: (
 	"gray-000": $gray-000,
 	"gray-100": $gray-100,
 	"gray-200": $gray-200,
-	"gray-brand": $gray-brand,
-	"gray-brand-rgb": $gray-brand-rgb,
+	"gray-300": $gray-300,
 	"gray-400": $gray-400,
 	"gray-500": $gray-500,
 	"white": $white,
 	"black": $black,
-
-	"primary-100": $primary-100,
-	"primary-200": $primary-200,
-	"primary-brand": $primary-brand,
-	"primary-brand-rgb": $primary-brand-rgb,
-	"primary-400": $primary-400,
-	"primary-500": $primary-500,
 );
 
 /* ----------------

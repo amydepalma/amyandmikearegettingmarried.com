@@ -26,16 +26,16 @@
 @import "02-utilities/text";
 
 /* Components */
-// @import "03-components/cover";
+@import "03-components/cover";
 // @import "03-components/details";
-// @import "03-components/group";
+@import "03-components/group";
 // @import "03-components/image";
 // @import "03-components/separator";
 
 /* Templates */
 @import "04-templates/structure/header";
 @import "04-templates/structure/footer";
-// @import "04-templates/pages/home";
+@import "04-templates/home";
 
 /* Other dependencies  */
 @import "05-plugins/wp-rsvp";

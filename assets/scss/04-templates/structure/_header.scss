@@ -2,7 +2,6 @@
 header#site-header {
   position: relative;
   z-index: 1000;
-  margin-bottom: rem(65);
 
   // Reset and baseline lists
   ul {
@@ -10,56 +9,41 @@ header#site-header {
     flex-wrap: wrap;
     width: 100%;
     margin: 0;
-    // gap: 0.5ch;
+    justify-content: center;
     flex-direction: row;
-    gap: 2.15vw;
-
-    @media only screen and (min-width:1260px) {
-      column-gap: 1.25vw;
-    }
-
-    @media only screen and (min-width:1336px) {
-      column-gap: 1.5vw;
-    }
-
-    @media only screen and (min-width:1600px) {
-      column-gap: 1.65rem;
-    }
+    gap: 3.15vw;
 
     // Top-level
     >li {
-      flex-grow: 1;
       line-height: 1;
-      margin-bottom: 0;
-      display: inline-flex;
-      align-items: center;
+      margin-block: 0.65rem;
+      list-style: none;
 
       >a {
         display: inline-block;
         text-decoration: none;
-        font-weight: 600;
         font-size: rem(16);
         margin: 0;
-        padding: 0.5rem 0.25rem;
-        color: var(--nav-link-desktop-color);
+        color: var(--gray-300);
+        font-weight: 440;
+        font-family: var(--ff-sans);
 
-        @media only screen and (min-width:1260px) {
-          font-size: clamp(1rem, 0.9637rem + 0.1613vw, 1.25rem);
-          padding: 0.5rem;
+        @include media-breakpoint-up(lg) {
+          font-size: rem(18);
         }
 
-        &[aria-current=page],
+
         &:hover,
         &:active,
         &:focus,
         &:focus-visible {
-          color: var(--nav-link-desktop-color-hover);
-          text-decoration: underline;
-          text-decoration-color: var(--nav-link-desktop-color-underline-hover);
-          text-underline-position: normal;
-          // text-underline-offset: rem(15);
-          text-decoration-style: wavy;
-          text-decoration-thickness: rem(1);
+          color: var(--navy);
+          text-decoration: none;
+        }
+
+        &[aria-current=page] {
+          font-weight: 640;
+          color: var(--gray-500);
         }
       }
     }
@@ -70,10 +54,11 @@ header#site-header {
   --padding-inline: 2rem;
   display: flex;
   align-items: center;
-  padding-block: 1rem;
+  justify-content: center;
+  padding-top: 1rem;
 
   @include media-breakpoint-up(xxl) {
-    padding-block: calc(16px * 1.409);
+    padding-top: calc(16px * 1.409);
   }
 
   #branding {
@@ -87,29 +72,26 @@ header#site-header {
 
     img {
       vertical-align: middle;
-      width: 100%;
+      width: 90%;
       height: auto;
       transition: all 0.2s ease;
       user-select: none;
-      margin-bottom: rem(-10);
+      margin: 0 auto;
+      margin-bottom: rem(-15);
       position: relative;
       z-index: 1;
+
     }
-
   }
-
 
   #navigation {
     position: relative;
     z-index: 0;
-    border-top: 1px solid var(--gray-100);
-    border-bottom: 1px solid var(--gray-100);
+    border-top: 1px solid var(--gray-200);
+    border-bottom: 1px solid var(--gray-200);
     padding-block: rem(10);
-    // top: auto;
-    // height: auto;
-    // display: flex;
-    // align-items: center;
-    // max-height: none;
-    // flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

@@ -1,14 +1,12 @@
-<?php get_header(); ?>
+<?php get_header( 'std' ); ?>
 
 <?php if ( have_posts() ) : ?>
 	<?php while ( have_posts() ) :
 		the_post(); ?>
 		<div id="block-editor-content" class="page grid-page">
-			<div class="mt-lg mb-xxl" style="max-width: 57ch; text-wrap: balance; margin: 0 auto;">
-				<?php the_content(); ?>
-			</div>
+			<?php the_content(); ?>
 		</div>
 	<?php endwhile; ?>
 <?php endif; ?>
 
-<?php get_footer(); ?>
+<?php get_footer( 'std' ); ?>

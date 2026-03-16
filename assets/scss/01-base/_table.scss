@@ -1,4 +1,5 @@
 @use "sass:color";
+
 table,
 .wp-block-table table {
 	border-collapse: collapse;
@@ -20,7 +21,7 @@ table,
 		border-top-left-radius: 4px;
 
 		th {
-			border-bottom: 1px solid color.adjust($primary-brand-rgba, $lightness: -5%);
+			// border-bottom: 1px solid color.adjust($primary-brand-rgba, $lightness: -5%);
 			font-weight: 800;
 			line-height: normal;
 		}

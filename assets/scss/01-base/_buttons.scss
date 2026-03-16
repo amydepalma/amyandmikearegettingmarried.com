@@ -5,6 +5,7 @@
 	justify-content: center;
 	align-items: center;
 	width: fit-content;
+	font-family: var(--ff-sans);
 	padding: .85em 1.85em !important;
 	border-width: rem(2);
 	border-style: solid;
@@ -14,7 +15,8 @@
 	transition: all .2s ease;
 	text-transform: inherit;
 	font-size: var(--fs-sm);
-	font-weight: 600;
+	font-weight: 720;
+	letter-spacing: 0.09em;
 	line-height: 1;
 	text-decoration: none;
 	cursor: pointer;
@@ -85,6 +87,21 @@ div.wp-block-button .wp-element-button {
 		}
 	}
 
+
+	&.has-orange-dark-background-color {
+		color: var(--white) !important;
+		border-color: var(--orange-dark) !important;
+
+		&:hover,
+		&:active,
+		&:focus,
+		&:focus-visible {
+			color: var(--white) !important;
+			background-color: color.adjust($orange-dark, $lightness: 10%) !important;
+			border-color: color.adjust($orange-dark, $lightness: 10%) !important;
+		}
+	}
+
 	&.has-navy-background-color {
 		color: var(--white) !important;
 		border-color: var(--navy) !important;
@@ -99,6 +116,20 @@ div.wp-block-button .wp-element-button {
 		}
 	}
 
+	&.has-navy-dark-background-color {
+		color: var(--white) !important;
+		border-color: var(--navy-dark) !important;
+
+		&:hover,
+		&:active,
+		&:focus,
+		&:focus-visible {
+			color: var(--white) !important;
+			background-color: color.adjust($navy-dark, $lightness: 10%) !important;
+			border-color: color.adjust($navy-dark, $lightness: 10%) !important;
+		}
+	}
+
 	&.has-green-background-color {
 		color: var(--white) !important;
 		border-color: var(--green) !important;
@@ -110,6 +141,20 @@ div.wp-block-button .wp-element-button {
 			color: var(--white) !important;
 			background-color: color.adjust($green, $lightness: -20%) !important;
 			border-color: color.adjust($green, $lightness: -20%) !important;
+		}
+	}
+
+	&.has-green-dark-background-color {
+		color: var(--white) !important;
+		border-color: var(--green-dark) !important;
+
+		&:hover,
+		&:active,
+		&:focus,
+		&:focus-visible {
+			color: var(--white) !important;
+			background-color: color.adjust($green-dark, $lightness: -20%) !important;
+			border-color: color.adjust($green-dark, $lightness: -20%) !important;
 		}
 	}
 }

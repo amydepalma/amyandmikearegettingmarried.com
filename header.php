@@ -25,7 +25,7 @@
 
 		<?php wp_body_open() ?>
 
-		<div id="site-wrapper" class="has-white-background-color pt-md px-md has-box-shadow-sm" style="background-image: url(<?= get_template_directory_uri(); ?>/assets/images/flower-bkg.webp);">
+		<div id="site-wrapper" class="has-white-background-color pt-xxl px-md has-box-shadow-sm" style="background-image: url(<?= get_template_directory_uri(); ?>/assets/images/flower-bkg.webp);">
 			<header id="site-header" class="top">
 				<div id="site-masthead">
 					<div class="d-flex flex-column align-items-center justify-content-center">
