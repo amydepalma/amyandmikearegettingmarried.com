@@ -1,20 +1,10 @@
 footer#site-footer {
+  margin-bottom: 5vw;
 
-  #footer-primary {
-    background-color: var(--footer-bkg);
-    color: var(--footer-meta-color);
-    align-items: center;
-
-    a {
-      color: var(--footer-meta-link);
-
-      &:hover,
-      &:active,
-      &:focus,
-      &:focus-visible {
-        text-decoration: none;
-        color: var(--footer-meta-link);
-      }
-    }
+  p {
+    font-family: var(--ff-sans);
+    font-size: rem(14);
+    line-height: 1.5;
+    margin: 0;
   }
 }
