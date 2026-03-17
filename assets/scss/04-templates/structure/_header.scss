@@ -2,21 +2,27 @@
 header#site-header {
   position: relative;
   z-index: 1000;
+  width: 100%;
+
+  nav {
+    width: 100%;
+  }
 
   // Reset and baseline lists
   ul {
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
     width: 100%;
     margin: 0;
     justify-content: center;
     flex-direction: row;
-    gap: 3.15vw;
+    row-gap: rem(4);
+    column-gap: calc(16px * 1.409);
 
     // Top-level
     >li {
       line-height: 1;
-      margin-block: 0.65rem;
+      margin-block: rem(8);
       list-style: none;
 
       >a {
@@ -29,7 +35,7 @@ header#site-header {
         font-family: var(--ff-sans);
 
         @include media-breakpoint-up(lg) {
-          font-size: rem(18);
+          font-size: rem(17);
         }
 
 
@@ -51,11 +57,11 @@ header#site-header {
 }
 
 #site-header #site-masthead {
-  --padding-inline: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   padding-top: 1rem;
+  width: 100%;
 
   @include media-breakpoint-up(xxl) {
     padding-top: calc(16px * 1.409);
@@ -89,7 +95,8 @@ header#site-header {
     z-index: 0;
     border-top: 1px solid var(--gray-200);
     border-bottom: 1px solid var(--gray-200);
-    padding-block: rem(10);
+    padding-block: calc(16px * 1);
+    padding-inline: calc(16px * 1.409);
     display: flex;
     align-items: center;
     justify-content: center;
