@@ -4,7 +4,7 @@
 	<?php while ( have_posts() ) :
 		the_post(); ?>
 		<div id="block-editor-content" class="page grid-page">
-			<div class="mt-lg mb-xxl" style="max-width: 57ch; text-wrap: balance; margin: 0 auto;">
+			<div class="mt-lg mb-xxl" style=" text-wrap: balance; margin: 0 auto;">
 				<?php the_content(); ?>
 			</div>
 		</div>

@@ -1,5 +1,10 @@
-.wpr-wrapper {
-	h2 {
-		font-weight: 600;
+.wpr-guest-card {
+	border: none !important;
+
+	h3 {
+		font-size: calc(var(--fs-md) * 1.1) !important;
+		color: var(--orange);
+		margin-top: 0.25rem !important;
+		font-weight: 800;
 	}
 }

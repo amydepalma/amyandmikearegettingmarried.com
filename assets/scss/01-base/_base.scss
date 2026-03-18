@@ -4,7 +4,7 @@ body {
 
 #site-wrapper {
 	max-width: 76ch;
-	margin: 10vw 5vw 2vw 5vw;
+	margin: 0 auto 2vw auto;
 	border-radius: rem(3);
 	background-position: bottom center;
 	background-repeat: no-repeat;
@@ -12,6 +12,6 @@ body {
 	padding-bottom: rem(175);
 
 	@include media-breakpoint-up(md) {
-		margin: 5vw auto 2vw auto;
+		margin: 3vw auto 2vw auto;
 	}
 }

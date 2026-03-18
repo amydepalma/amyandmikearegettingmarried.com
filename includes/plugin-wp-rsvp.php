@@ -913,10 +913,10 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 			// Check for Success Message from Init Redirect
 			if ( get_transient( 'wgrsvp_success_msg' ) ) {
 				delete_transient( 'wgrsvp_success_msg' );
-				return '<div class="wpr-wrapper"><div style="color:green;border:1px solid green;padding:15px;margin-bottom:20px;background:#eaffea;">' . esc_html__( 'Thank you! Your RSVP has been updated.', 'wedding-party-rsvp' ) . '</div></div>';
+				return '<div class="wpr-wrapper mt-lg"><div style="color:green;border:1px solid green;padding:15px;margin-bottom:20px;background:#eaffea;">' . esc_html__( 'Thank you! Your RSVP has been updated.', 'wedding-party-rsvp' ) . '</div></div>';
 			}
 
-			$output = '<div class="wpr-wrapper">';
+			$output = '<div class="wpr-wrapper mt-lg">';
 
 			// --- LOGIN FORM CHECK ---
 			$login_nonce = filter_input( INPUT_POST, 'wpr_login_nonce', FILTER_SANITIZE_SPECIAL_CHARS );
@@ -943,30 +943,41 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 			if ( empty( $guests ) ) {
 				$output .= '<form method="post">';
 				$output .= wp_nonce_field( 'wpr_login_action', 'wpr_login_nonce', true, false );
-				$output .= '<div class="wpr-field"><label>' . esc_html__( 'Your Party ID', 'wedding-party-rsvp' ) . '</label><input type="text" name="wpr_party_id" placeholder="Firstname Lastname" required></div><button name="wpr_login_action" class="wpr-button">Find Invitation</button></form>';
+				$output .= '<div class="wpr-field"><label for="wpr_party_id" class="has-text-align-center">' . esc_html__( 'Please Enter Your Party ID', 'wedding-party-rsvp' ) . '</label>
+				<p class="ff-sans has-page-font-size has-text-align-center">Your Party ID is the unique code you will use to RSVP for every member in your family and/or group. Find your Party ID on the included insert with your invitation. If your card is missing or you are having trouble with this form, get in touch with Mike or Amy and we’ll you sorted.</p><input type="text" name="wpr_party_id" placeholder="" required>';
+
+				$output .= '<p class="form-error ff-sans fw-bold has-page-font-size has-text-align-center" style="display: none">We cannot find your Party ID. Please check your spelling or reach out to Amy or Mike.</p>';
+
+
+				$output .= '</div><button name="wpr_login_action" class="mc-button has-navy-background-color mx-auto">RSVP Now</button></form>';
+
 			} else {
 				$menus_adult = get_option( $this->opt_menu_adult, array() );
 				$welcome_title = ! empty( $settings['welcome_title'] ) ? stripslashes( $settings['welcome_title'] ) : 'Party ID: ' . esc_html( $party_id );
 
 				$output .= '<form method="post">' . wp_nonce_field( 'wpr_frontend_save', '_wpnonce', true, false ) . '<input type="hidden" name="party_id" value="' . esc_attr( $party_id ) . '">';
-				$output .= '<h2 class="has-text-align-center">' . esc_html( $welcome_title ) . '</h2><p class="has-text-align-center">Guest Count: ' . count( $guests ) . '</p>';
+				$output .= '<div class="d-block has-text-align-center has-green-background-color has-white-color py-sm px-sm" style="border-radius: 12px;"><h2 class="has-lg-font-size has-text-align-center has-white-color" style="font-weight: 680;margin-top: 0;margin-left: auto;margin-right: auto;">' . esc_html( $welcome_title ) . '</h2>';
+				$output .= '<p class="has-text-align-center has-md-font-size fw-bold">Number of Guests in Party: ' . count( $guests ) . '</p></div>';
 				$output .= '<input type="text" name="wpr_honey" class="wpr-honey">';
+				$output .= '<p class="label-big has-text-align-center mt-lg">RSVP for Each Member of Your Party</p>';
 
-				$i = 0;
-
+				$i = 1;
 				foreach ( $guests as $g ) {
 					$output .= '<div class="wpr-guest-card">';
+
 					$is_placeholder = in_array( strtolower( $g->guest_name ), array( 'guest', 'plus one', '+1' ) );
+
 					if ( $is_placeholder ) {
+						$output .= '<h3 class="ff-base mb-sm">#' . $i . ': Guest</h3>';
 						$output .= '<div class="wpr-field"><label>' . esc_html__( 'Please Provide Your Guest\'s Name*', 'wedding-party-rsvp' ) . '</label><input type="text" placeholder="" name="guest[' . $g->id . '][name_edit]" value=""></div>';
 					} else {
-						$output .= '<h3>' . esc_html( $g->guest_name ) . '</h3>';
+						$output .= '<h3 class="ff-base mb-sm">#' . $i . ': ' . esc_html( $g->guest_name ) . '</h3>';
 						$output .= '<input type="hidden" name="guest[' . $g->id . '][name_hidden]" value="' . esc_attr( $g->guest_name ) . '">';
 					}
 
 					// Table Display Removed (Pro)
 
-					$output .= '<div class="wpr-field"><label>' . esc_html__( 'Attending?*', 'wedding-party-rsvp' ) . '</label><select name="guest[' . $g->id . '][rsvp]" required>';
+					$output .= '<div class="wpr-field"><label>' . esc_html__( 'Attending?', 'wedding-party-rsvp' ) . '</label><select name="guest[' . $g->id . '][rsvp]" required>';
 					$output .= '<option value="Pending" ' . selected( $g->rsvp_status, 'Pending', false ) . '>' . esc_html__( 'Select...', 'wedding-party-rsvp' ) . '</option>';
 					$output .= '<option value="Accepted" ' . selected( $g->rsvp_status, 'Accepted', false ) . '>' . esc_html__( 'Delighted to attend', 'wedding-party-rsvp' ) . '</option>';
 					$output .= '<option value="Declined" ' . selected( $g->rsvp_status, 'Declined', false ) . '>' . esc_html__( 'Regretfully decline', 'wedding-party-rsvp' ) . '</option></select></div>';
@@ -979,14 +990,16 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 					// $output .= '</select></div>';
 
 					$output .= '<div class="wpr-field"><label>' . esc_html__( 'Dietary Restrictions', 'wedding-party-rsvp' ) . '</label>';
-					$allergies = array( 'Gluten Free', 'Dairy Free', 'Vegetarian', 'Vegan', 'Nut Allergy' );
+					$allergies = array( 'Gluten Free', 'Vegetarian', 'Vegan', 'Other (please add in comments)' );
 					$saved_allergies = explode( ', ', $g->allergies );
-					$output .= '<div class="wpr-checkbox-group">';
+
+					$output .= '<div class="wpr-checkbox-group wpr-checkbox-group d-inline-flex col-gap-md row-gap-sm flex-wrap">';
 					foreach ( $allergies as $a ) {
 						$checked = in_array( $a, $saved_allergies ) ? 'checked' : '';
 						$output .= '<label><input type="checkbox" name="guest[' . $g->id . '][allergies][]" value="' . esc_attr( $a ) . '" ' . $checked . '> ' . esc_html( $a ) . '</label>';
 					}
-					$output .= '</div><input type="text" name="guest[' . $g->id . '][dietary]" value="' . esc_attr( $g->dietary_restrictions ) . '" placeholder="' . esc_attr__( 'Other...', 'wedding-party-rsvp' ) . '"></div>';
+
+					$output .= '</div></div>';
 
 					// $output .= '<div class="wpr-field"><label>' . esc_html__( 'I promise to dance if you play:', 'wedding-party-rsvp' ) . '</label><input type="text" name="guest[' . $g->id . '][song]" value="' . esc_attr( $g->song_request ) . '"></div>';
 //
@@ -994,47 +1007,26 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 
 					// $output .= '<div class="wpr-field"><label>' . esc_html__( 'Email', 'wedding-party-rsvp' ) . '</label><input type="email" name="guest[' . $g->id . '][email]" value="' . esc_attr( $g->email ) . '"></div>';
 					// $output .= '<div class="wpr-field"><label>' . esc_html__( 'Phone', 'wedding-party-rsvp' ) . '</label><input type="text" name="guest[' . $g->id . '][phone]" value="' . esc_attr( $g->phone ) . '"></div>';
-
-					if ( $i === 0 ) {
-						$output .= '<div class="wpr-field"><label>' . esc_html__( 'Mailing Address', 'wedding-party-rsvp' ) . '</label><textarea name="guest[' . $g->id . '][address]">' . esc_textarea( $g->address ) . '</textarea></div>';
-					}
-
 					$output .= '</div>';
 					$i++;
 				}
-				$output .= '<button name="wpr_submit_rsvp" class="wpr-button">Submit RSVP</button></form>';
+
+				$i2 = 1;
+				foreach ( $guests as $g ) {
+					if ( $i2 === 1 ) {
+						$output .= '<div class="wpr-field mt-xl"><label for="" class="label-big has-text-align-center">' . esc_html__( 'Comments or Questions?', 'wedding-party-rsvp' ) . '</label><textarea name="guest[' . $g->id . '][address]" class="m-0">' . esc_textarea( $g->address ) . '</textarea></div>';
+					}
+					$i2++;
+				}
+
+				$output .= '<button name="wpr_submit_rsvp" class="mc-button mt-lg has-navy-background-color mx-auto">Submit RSVP</button></form>';
+
 			}
+
 			return $output . '</div>';
 		}
-
-		// --- EMAIL PAGE (Upsell Placeholder) ---
-		public function admin_page_email() {
-			?>
-			<!-- <div class="wrap">
-				<h1><?php esc_html_e( 'Email Invites', 'wedding-party-rsvp' ); ?></h1>
-				<div style="background:#fff; border:1px solid #ccc; padding:30px; text-align:center; max-width:600px; margin-top:20px;">
-					<h2><?php esc_html_e( 'Send Invites Directly', 'wedding-party-rsvp' ); ?></h2>
-					<p><?php esc_html_e( 'The Pro version includes a complete Email Invitation system. Send customized invites to your guests with one click.', 'wedding-party-rsvp' ); ?></p>
-					<a href="<?php echo esc_url( 'https://landtechwebdesigns.com/wedding-party-rsvp-wordpress-plugin/' ); ?>" target="_blank" class="button button-primary button-large"><?php esc_html_e( 'Upgrade to Pro', 'wedding-party-rsvp' ); ?></a>
-				</div>
-			</div> -->
-			<?php
-		}
-
-		// --- SMS PAGE (Upsell Placeholder) ---
-		public function admin_page_sms() {
-			?>
-			<!-- <div class="wrap">
-				<h1><?php esc_html_e( 'SMS Invites', 'wedding-party-rsvp' ); ?></h1>
-				<div style="background:#fff; border:1px solid #ccc; padding:30px; text-align:center; max-width:600px; margin-top:20px;">
-					<h2><?php esc_html_e( 'Text Your Guests', 'wedding-party-rsvp' ); ?></h2>
-					<p><?php esc_html_e( 'Upgrade to the Pro version to integrate with Twilio and send SMS invitations directly to your guest list.', 'wedding-party-rsvp' ); ?></p>
-					<a href="<?php echo esc_url( 'https://landtechwebdesigns.com/wedding-party-rsvp-wordpress-plugin/' ); ?>" target="_blank" class="button button-primary button-large"><?php esc_html_e( 'Upgrade to Pro', 'wedding-party-rsvp' ); ?></a>
-				</div>
-			</div> -->
-			<?php
-		}
 	}
+
 
 	new WGRSVP_Wedding_RSVP();
 
