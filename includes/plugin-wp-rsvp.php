@@ -410,7 +410,7 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 							<!-- <th width="12%"><?php esc_html_e( 'Menu', 'wedding-party-rsvp' ); ?></th> -->
 							<!-- <th width="5%"><?php esc_html_e( 'Tbl', 'wedding-party-rsvp' ); ?></th> -->
 							<th width="18%"><?php esc_html_e( 'Allergy Info', 'wedding-party-rsvp' ); ?></th>
-							<!-- <th width="15%"><?php esc_html_e( 'Admin Notes', 'wedding-party-rsvp' ); ?></th> -->
+							<th width="15%"><?php esc_html_e( 'Comments/Questions', 'wedding-party-rsvp' ); ?></th>
 							<th width="16%"><?php esc_html_e( 'Actions', 'wedding-party-rsvp' ); ?></th>
 						</tr>
 					</thead>
@@ -465,16 +465,19 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 											if ( ! empty( $guest->allergies ) ) {
 												echo '! ' . esc_html( $guest->allergies ) . '<br>';
 											}
-											// if ( ! empty( $guest->guest_message ) ) {
-											// 	echo '&#9993; "' . esc_html( substr( $guest->guest_message, 0, 20 ) ) . '..."';
-											// }
+											if ( ! empty( $guest->guest_message ) ) {
+												echo '&#9993; "' . esc_html( substr( $guest->guest_message, 0, 20 ) ) . '..."';
+											}
 											?>
 										</div>
 									</td>
 
-									<!-- <td>
-										<div class="wpr-pro-placeholder" style="height:50px; line-height:50px;">Admin Notes (Available in Pro)</div>
-									</td> -->
+									<td>
+										<div class=""><?php if ( ! empty( $guest->address ) ) {
+											echo esc_html( $guest->address, 0, 20 );
+										}
+										?></div>
+									</td>
 
 									<td style="white-space:nowrap;">
 										<button type="submit" name="wgrsvp_update_guest" class="button button-primary button-small" title="Save"><span class="dashicons dashicons-saved"></span> Save</button>
@@ -944,7 +947,7 @@ if ( ! class_exists( 'WGRSVP_Wedding_RSVP' ) ) :
 				$output .= '<form method="post">';
 				$output .= wp_nonce_field( 'wpr_login_action', 'wpr_login_nonce', true, false );
 				$output .= '<div class="wpr-field"><label for="wpr_party_id" class="has-text-align-center">' . esc_html__( 'Please Enter Your Party ID', 'wedding-party-rsvp' ) . '</label>
-				<p class="ff-sans has-page-font-size has-text-align-center">Your Party ID is the unique code you will use to RSVP for every member in your family and/or group. Find your Party ID on the included insert with your invitation. If your card is missing or you are having trouble with this form, get in touch with Mike or Amy and we’ll you sorted.</p><input type="text" name="wpr_party_id" placeholder="" required>';
+				<p class="ff-sans has-page-font-size has-text-align-center text-balance">Your Party ID is the first and last name of one of the members in your family and/or group that you will use to RSVP for every member in your party.</p><p class="ff-sans has-page-font-size has-text-align-center text-balance">Find your Party ID on the included insert with your invitation. If your card is missing or you are having trouble with this form, get in touch with Mike or Amy and we’ll you sorted.</p><input type="text" name="wpr_party_id" placeholder="Firstname Lastname" required>';
 
 				$output .= '<p class="form-error ff-sans fw-bold has-page-font-size has-text-align-center" style="display: none">We cannot find your Party ID. Please check your spelling or reach out to Amy or Mike.</p>';
 
